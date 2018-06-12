@@ -1,0 +1,11 @@
+.footer-container {
+    min-height: 50px; 
+    background-color: gray;
+    margin-bottom: 0px; 
+    padding: 15px; 
+}
+
+.footer-container i {
+    font-size: 30px;
+}
+

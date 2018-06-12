@@ -1,0 +1,27 @@
+.description-card-container {
+    display: flex; 
+    justify-content: center;
+}
+
+.description-card-container{
+    width: 80%;
+    margin: 40px auto;
+}
+
+.description-card {
+    width: 250px;
+}
+
+.description-card i{
+    font-size: 20px;
+}
+
+.description-card p{
+    font-size: 16px;
+}
+
+
+
+.description-card i {
+    font-size: 60px;
+}
