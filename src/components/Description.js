@@ -9,15 +9,15 @@ export default class Description extends Component {
                 <h2>How It Works</h2>
                 <div className="description-card-container">
                     <div className="description-card">
-                        <i class="fas fa-search"></i>
+                        <i className="fas fa-search"></i>
                         <p>Discover delicious plant based recipes</p>
                     </div>
                     <div className="description-card">
-                        <i class="far fa-bookmark"></i>
+                        <i className="far fa-bookmark"></i>
                         <p>Save your favorite recipes</p>
                     </div>
                     <div className="description-card">
-                        <i class="far fa-plus-square"></i>
+                        <i className="far fa-plus-square"></i>
                         <p>Create your own plant based recipes</p>
                     </div>
                 </div> 

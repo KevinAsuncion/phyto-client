@@ -7,7 +7,7 @@ export default class Footer extends Component {
         return (
             <div className="footer-container">
                 <div className="footer-info">
-                    <i class="fab fa-github"></i>
+                    <i className="fab fa-github"></i>
                     <p>Built by Kevin Asuncion</p>
                 </div>
             </div>

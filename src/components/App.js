@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import Hero from './Hero';
 import Description from './Description';
 import Footer from './Footer';
+import Login from './Login'
 
 export default class App extends Component {
   render() {
@@ -19,6 +20,7 @@ export default class App extends Component {
             <Description/>
           </main> 
           <Footer/>
+          <Login/>
         </div>
     );
   }
