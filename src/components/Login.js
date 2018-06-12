@@ -13,12 +13,15 @@ export default class Login extends Component {
                             <input 
                                 id="login-username"
                                 type="text"
+                                autoComplete="off"
+                                placeholder="Username"
                             /> 
                         </label>
                         <label>Password
                             <input
                                 id="login-password"
-                                type="text"
+                                type="password"
+                                placeholder="Enter password"
                             />
                         </label>
                         <button type="submit">Submit</button>

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 // import { BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import './App.css';
 import Navbar from './Navbar';
-import Hero from './Hero';
-import Description from './Description';
+import Landingpage from './Landingpage'
 import Footer from './Footer';
-import Login from './Login'
+import Login from './Login';
+import Signup from './Signup';
 
 export default class App extends Component {
   render() {
@@ -16,11 +16,13 @@ export default class App extends Component {
             <Navbar/>
           </header>
           <main>
-            <Hero/>
-            <Description/>
+         
+            <Landingpage /> 
+            
           </main> 
-          <Footer/>
-          <Login/>
+          <Footer/> 
+          <Signup />   
+          <Login />
         </div>
     );
   }
