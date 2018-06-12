@@ -8,7 +8,7 @@ import Footer from './Footer';
 
 export default class App extends Component {
   render() {
-    return (
+    return ( 
         <div className="App">
           <header>
             <h1 className="App-title">Phyto</h1>

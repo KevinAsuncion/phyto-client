@@ -6,7 +6,7 @@ export default class Navbar extends Component {
         return (
            <nav className="nav-bar-container">
                <ul>
-                   <li>Login</li>
+                    <li>Login</li>
                     <li>Signup</li>
                     <li hidden>Logout</li>
                </ul> 
