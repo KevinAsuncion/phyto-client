@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 // import { BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import './App.css';
 import Navbar from './Navbar';
-import Landingpage from './Landingpage'
+import Landingpage from './Landingpage';
 import Footer from './Footer';
 import Login from './Login';
 import Signup from './Signup';
-import Searchpage from './Searchpage'
+import Searchpage from './Searchpage';
+import Myrecipes from './Myrecipes';
 
 export default class App extends Component {
   render() {
@@ -20,7 +21,7 @@ export default class App extends Component {
           <Footer /> 
             <Searchpage />
             <Landingpage /> 
-            
+            <Myrecipes /> 
           </main> 
           
           <Signup />   
