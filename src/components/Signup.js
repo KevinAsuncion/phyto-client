@@ -11,7 +11,7 @@ export default class Login extends Component {
                     <form>
                         <label>Full Name
                             <input
-                                id="signup-username"
+                                id="signup-fullname"
                                 type="text"
                                 autoComplete="off"
                                 placeholder="Name"

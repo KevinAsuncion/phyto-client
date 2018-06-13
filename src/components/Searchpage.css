@@ -1,0 +1,27 @@
+.searchpage-container {
+    min-height: 500px;
+}
+.searchbox-container {
+    padding: 20px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.searchbox-container input {
+    width: 70%;
+    height: 40px;
+    font-size: 26px;  
+    border-bottom: 1px dotted black;  
+    border-top: none; 
+    border-left: none; 
+    border-right: none;
+}
+
+.searchbox-container button {
+    width: 50px;
+    height:45px;
+    font-size: 28px;
+    border: none;
+    cursor: pointer;
+}
