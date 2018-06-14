@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import './App.css';
 import Navbar from './Navbar';
 import Landingpage from './Landingpage';
@@ -12,21 +12,24 @@ import Myrecipes from './Myrecipes';
 export default class App extends Component {
   render() {
     return ( 
+      <Router>
         <div className="App">
           <header>
-            <h1 className="App-title">Phyto</h1>
+          <h1 className="App-title"><i className="fas fa-leaf"></i>Phyto</h1>
             <Navbar/>
           </header>
           <main>
-          <Footer /> 
-            <Searchpage />
-            <Landingpage /> 
-            <Myrecipes /> 
+            <Switch>
+              <Route exact path="/" component={Landingpage} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/discover" component={Searchpage} />
+              <Route exact path="/myrecipes" component={Myrecipes} />
+            </Switch>
           </main> 
-          
-          <Signup />   
-          <Login />
+          <Footer /> 
         </div>
+      </Router>
     );
   }
 }
