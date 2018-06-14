@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { login } from '../actions/recipe-actions'
 import './Login.css'
 
 
-export default class Login extends Component {
+export class Login extends Component {
+    handleSubmit(e){
+        e.preventDefault();
+        this.props.dispatch(login());
+    }
     render() {
         return (
             <div className="login-container">
                 <h2>Login</h2>
                 <div className="login-form">
-                    <form>
+                    <form onSubmit={(e)=> this.handleSubmit(e) }>
                         <label>Username
                             <input 
                                 id="login-username"
@@ -32,3 +38,5 @@ export default class Login extends Component {
         );
     }
 }
+
+export default connect()(Login)

@@ -1,37 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './Searchpage.css'
 import Recipelist from './Recipelist'
 
-export default class Searchpage extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            recipes: [
-                {
-                    image_url:"https://d3awvtnmmsvyot.cloudfront.net/api/file/ajeSZmvPRrKzJw8p9FNL/convert?fit=crop&w=300&h=200&quality=60&cache=true&rotate=exif&compress=true",
-                    title: "Roasted Vegetables 1",
-                    recipe_url: "https://www.chefsteps.com/activities/tips-tricks-perfect-roasted-vegetables"
-                },
-                {
-                    image_url: "https://d3awvtnmmsvyot.cloudfront.net/api/file/ajeSZmvPRrKzJw8p9FNL/convert?fit=crop&w=300&h=200&quality=60&cache=true&rotate=exif&compress=true",
-                    title: "Roasted Vegetables 2",
-                    recipe_url: "https://www.chefsteps.com/activities/tips-tricks-perfect-roasted-vegetables"
-                },
-                {
-                    image_url: "https://d3awvtnmmsvyot.cloudfront.net/api/file/ajeSZmvPRrKzJw8p9FNL/convert?fit=crop&w=300&h=200&quality=60&cache=true&rotate=exif&compress=true",
-                    title: "Roasted Vegetables 3",
-                    recipe_url: "https://www.chefsteps.com/activities/tips-tricks-perfect-roasted-vegetables"
-                },
-                {
-                    image_url: "https://d3awvtnmmsvyot.cloudfront.net/api/file/ajeSZmvPRrKzJw8p9FNL/convert?fit=crop&w=300&h=200&quality=60&cache=true&rotate=exif&compress=true",
-                    title: "Roasted Vegetables 4",
-                    recipe_url: "https://www.chefsteps.com/activities/tips-tricks-perfect-roasted-vegetables"
-                }
-            ]
-        }
-    }
+export class Searchpage extends Component {
+   //TODO handleSubmit => console.log(value)
+//    handleSubmit()
     render() {
-        const {recipes} = this.state 
+       
         return (
             <div className="searchpage-container">
                 <div className="searchbox-container">
@@ -45,9 +21,15 @@ export default class Searchpage extends Component {
                     </form> 
                 </div> 
                 <div className="results-container">
-                    <Recipelist recipes={recipes} type="searchrecipes"/>
+                    <Recipelist recipes={this.props.recipes} type="searchrecipes"/>
                 </div> 
             </div>
         );
     }
 }
+
+const mapStateToProps = state => ({
+    recipes: state.recipes
+})
+
+export default connect(mapStateToProps)(Searchpage);

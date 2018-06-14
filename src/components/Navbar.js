@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './Navbar.css'
 
-export default class Navbar extends Component {
-    constructor(props){
-        super(props);
-        this.state ={
-            loggedIn: true
-        }
-    }
+export class Navbar extends Component {
+ 
     render() {
         let navElements;
-        if(this.state.loggedIn){
+        if(!this.props.loggedIn){
             navElements = (
                 <ul>
                     <Link to="/"> <li>Home</li></Link>
@@ -35,4 +31,10 @@ export default class Navbar extends Component {
         );
     }
 }
+
+const mapStateToProps = state =>({
+    loggedIn: state.loggedIn
+})
+
+export default connect(mapStateToProps)(Navbar)
 

@@ -5,12 +5,13 @@ import Recipecard from './Recipecard'
 export default class Recipelist extends Component {
     
     render() {
+        //Todo handleRemove, handleSave 
         let btn
         if(this.props.type === "myrecipes"){
             btn = (
                 <button className="delete-button"><i className="far fa-trash-alt" /> Delete</button> 
             )
-        }else if (this.props.type === "searchrecipes"){
+        } else if (this.props.type === "searchrecipes"){
             btn = (
                 <button className="save-button"><i className="far fa-heart" /> Save</button> 
             )
@@ -22,7 +23,7 @@ export default class Recipelist extends Component {
                 <Recipecard {...recipe} />
                 <div className="recipe-card-buttons">
                     {btn}
-                    <button className="view-button"> <a href={recipe.recipe_url} target="_blank"><i class="far fa-eye"/> View</a></button>
+                    <button className="view-button"> <a href={recipe.recipe_url} target="_blank"><i className="far fa-eye"/> View</a></button>
                 </div> 
             </div>
         })
