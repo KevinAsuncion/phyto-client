@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { login } from '../actions/recipe-actions'
 import './Login.css'
-
+import { Redirect } from 'react-router-dom'
 
 export class Login extends Component {
     handleSubmit(e){
@@ -10,6 +10,9 @@ export class Login extends Component {
         this.props.dispatch(login());
     }
     render() {
+        if(this.props.loggedIn){
+            return <Redirect to="/discover" />
+        }
         return (
             <div className="login-container">
                 <h2>Login</h2>
@@ -39,4 +42,10 @@ export class Login extends Component {
     }
 }
 
-export default connect()(Login)
+const mapStateToProps= state =>({
+    loggedIn: state.loggedIn
+})
+    
+export default connect(mapStateToProps)(Login)
+
+

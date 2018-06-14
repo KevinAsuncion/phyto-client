@@ -10,6 +10,12 @@ export const login = () => ({
     type: LOGIN
 })
 
+export const LOGOUT = 'LOGOUT'
+export const logout = () => ({
+    type: LOGOUT
+})
+
+
 //Save favorite recipes
 export const SAVE_RECIPE = 'SAVE_RECIPE'
 export const saveRecipe = () => ({

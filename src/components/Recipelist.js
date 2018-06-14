@@ -6,6 +6,7 @@ export default class Recipelist extends Component {
     
     render() {
         //Todo handleRemove, handleSave 
+       
         let btn
         if(this.props.type === "myrecipes"){
             btn = (
