@@ -7,7 +7,6 @@ import {logout} from '../actions/recipe-actions'
 export class Navbar extends Component {
 
     handleLogout(e){
-        console.log("hello")
         this.props.dispatch(logout());
     }
 

@@ -1,4 +1,4 @@
-import { LOGIN, GET_SEARCH_RESULTS, LOGOUT} from '../actions/recipe-actions'
+import { LOGIN, GET_SEARCH_RESULTS, LOGOUT, SAVE_RECIPE, DELETE_RECIPE} from '../actions/recipe-actions'
 
 var searchResults = [
     {
@@ -23,32 +23,9 @@ var searchResults = [
     }
 ]
 
-const savedRecipes = []
-
 const initialState = {
     recipes: [],
-    favoriteRecipes: [
-        {
-            image_url: "https://d3awvtnmmsvyot.cloudfront.net/api/file/ajeSZmvPRrKzJw8p9FNL/convert?fit=crop&w=300&h=200&quality=60&cache=true&rotate=exif&compress=true",
-            title: "Roasted Vegetables 5",
-            recipe_url: "https://www.chefsteps.com/activities/tips-tricks-perfect-roasted-vegetables",
-        },
-        {
-            image_url: "https://d3awvtnmmsvyot.cloudfront.net/api/file/ajeSZmvPRrKzJw8p9FNL/convert?fit=crop&w=300&h=200&quality=60&cache=true&rotate=exif&compress=true",
-            title: "Roasted Vegetables 6",
-            recipe_url: "https://www.chefsteps.com/activities/tips-tricks-perfect-roasted-vegetables",
-        },
-        {
-            image_url: "https://d3awvtnmmsvyot.cloudfront.net/api/file/ajeSZmvPRrKzJw8p9FNL/convert?fit=crop&w=300&h=200&quality=60&cache=true&rotate=exif&compress=true",
-            title: "Roasted Vegetables 7",
-            recipe_url: "https://www.chefsteps.com/activities/tips-tricks-perfect-roasted-vegetables"
-        },
-        {
-            image_url: "https://d3awvtnmmsvyot.cloudfront.net/api/file/ajeSZmvPRrKzJw8p9FNL/convert?fit=crop&w=300&h=200&quality=60&cache=true&rotate=exif&compress=true",
-            title: "Roasted Vegetables 8",
-            recipe_url: "https://www.chefsteps.com/activities/tips-tricks-perfect-roasted-vegetables"
-        }
-    ],
+    favoriteRecipes: [],
     loggedIn: false
 };
 
@@ -65,19 +42,41 @@ export const recipeReducer = (state = initialState, action) => {
         return Object.assign({}, state, {
             loggedIn: false
         })
-    } 
-
-    // else if(action.type === SAVE_RECIPE){
-    //     Object.assign({},state,{
-    //         favoriteRecipes: [...favoriteRecipes, recipe ] 
-    //     })   
-    // }
-    // else if (action.type === DELETE_RECIPE) {
-    //     return Object.assign({}, state, {
-    //         loggedIn: true
-    //     })
-    // }
+    } else if(action.type === SAVE_RECIPE){
+        return Object.assign({}, state, {
+            favoriteRecipes: [...state.favoriteRecipes, action.savedRecipe ] 
+        })   
+    } else if (action.type === DELETE_RECIPE) {
+        return Object.assign({}, state, {
+            favoriteRecipes: state.favoriteRecipes.filter((recipe)=>{
+                return recipe.title !== action.title
+            })
+        })
+    }
     return state;
 };
 
+
+
+
+// {
+//     image_url: "https://d3awvtnmmsvyot.cloudfront.net/api/file/ajeSZmvPRrKzJw8p9FNL/convert?fit=crop&w=300&h=200&quality=60&cache=true&rotate=exif&compress=true",
+//         title: "Roasted Vegetables 5",
+//             recipe_url: "https://www.chefsteps.com/activities/tips-tricks-perfect-roasted-vegetables",
+//         },
+// {
+//     image_url: "https://d3awvtnmmsvyot.cloudfront.net/api/file/ajeSZmvPRrKzJw8p9FNL/convert?fit=crop&w=300&h=200&quality=60&cache=true&rotate=exif&compress=true",
+//         title: "Roasted Vegetables 6",
+//             recipe_url: "https://www.chefsteps.com/activities/tips-tricks-perfect-roasted-vegetables",
+//         },
+// {
+//     image_url: "https://d3awvtnmmsvyot.cloudfront.net/api/file/ajeSZmvPRrKzJw8p9FNL/convert?fit=crop&w=300&h=200&quality=60&cache=true&rotate=exif&compress=true",
+//         title: "Roasted Vegetables 7",
+//             recipe_url: "https://www.chefsteps.com/activities/tips-tricks-perfect-roasted-vegetables"
+// },
+// {
+//     image_url: "https://d3awvtnmmsvyot.cloudfront.net/api/file/ajeSZmvPRrKzJw8p9FNL/convert?fit=crop&w=300&h=200&quality=60&cache=true&rotate=exif&compress=true",
+//         title: "Roasted Vegetables 8",
+//             recipe_url: "https://www.chefsteps.com/activities/tips-tricks-perfect-roasted-vegetables"
+// }
 

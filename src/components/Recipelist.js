@@ -1,8 +1,27 @@
 import React, { Component } from 'react';
-import './Recipelist.css'
-import Recipecard from './Recipecard'
+import './Recipelist.css';
+import Recipecard from './Recipecard';
+import { connect } from 'react-redux';
+import { saveRecipe, deleteRecipe } from '../actions/recipe-actions'
 
-export default class Recipelist extends Component {
+export class Recipelist extends Component {
+    handleSave(e){
+       const image_url = e.target.parentNode.previousSibling.firstElementChild.getAttribute('src')
+       const title = e.target.parentNode.previousSibling.lastElementChild.textContent
+       const recipe_url = e.target.nextSibling.firstElementChild.getAttribute('href')
+       const savedRecipe = {
+           image_url: image_url,
+           title: title,
+           recipe_url: recipe_url 
+       }
+       this.props.dispatch(saveRecipe(savedRecipe))
+    }
+
+    handleDelete(e){
+        const title = e.target.parentNode.previousSibling.lastElementChild.textContent;
+        console.log(title);
+        this.props.dispatch(deleteRecipe(title));
+    }
     
     render() {
         //Todo handleRemove, handleSave 
@@ -10,11 +29,11 @@ export default class Recipelist extends Component {
         let btn
         if(this.props.type === "myrecipes"){
             btn = (
-                <button className="delete-button"><i className="far fa-trash-alt" /> Delete</button> 
+                <button className="delete-button" onClick={(e) => this.handleDelete(e)}><i className="far fa-trash-alt" /> Delete</button> 
             )
         } else if (this.props.type === "searchrecipes"){
             btn = (
-                <button className="save-button"><i className="far fa-heart" /> Save</button> 
+                <button className="save-button" onClick={(e)=>this.handleSave(e)}><i className="far fa-heart" /> Save</button> 
             )
         }
        
@@ -35,3 +54,5 @@ export default class Recipelist extends Component {
         );
     }
 }
+
+export default connect()(Recipelist)
