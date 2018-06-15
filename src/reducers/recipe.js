@@ -55,28 +55,3 @@ export const recipeReducer = (state = initialState, action) => {
     }
     return state;
 };
-
-
-
-
-// {
-//     image_url: "https://d3awvtnmmsvyot.cloudfront.net/api/file/ajeSZmvPRrKzJw8p9FNL/convert?fit=crop&w=300&h=200&quality=60&cache=true&rotate=exif&compress=true",
-//         title: "Roasted Vegetables 5",
-//             recipe_url: "https://www.chefsteps.com/activities/tips-tricks-perfect-roasted-vegetables",
-//         },
-// {
-//     image_url: "https://d3awvtnmmsvyot.cloudfront.net/api/file/ajeSZmvPRrKzJw8p9FNL/convert?fit=crop&w=300&h=200&quality=60&cache=true&rotate=exif&compress=true",
-//         title: "Roasted Vegetables 6",
-//             recipe_url: "https://www.chefsteps.com/activities/tips-tricks-perfect-roasted-vegetables",
-//         },
-// {
-//     image_url: "https://d3awvtnmmsvyot.cloudfront.net/api/file/ajeSZmvPRrKzJw8p9FNL/convert?fit=crop&w=300&h=200&quality=60&cache=true&rotate=exif&compress=true",
-//         title: "Roasted Vegetables 7",
-//             recipe_url: "https://www.chefsteps.com/activities/tips-tricks-perfect-roasted-vegetables"
-// },
-// {
-//     image_url: "https://d3awvtnmmsvyot.cloudfront.net/api/file/ajeSZmvPRrKzJw8p9FNL/convert?fit=crop&w=300&h=200&quality=60&cache=true&rotate=exif&compress=true",
-//         title: "Roasted Vegetables 8",
-//             recipe_url: "https://www.chefsteps.com/activities/tips-tricks-perfect-roasted-vegetables"
-// }
-
