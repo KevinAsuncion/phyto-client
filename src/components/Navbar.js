@@ -5,7 +5,6 @@ import './Navbar.css'
 import {logout} from '../actions/recipe-actions'
 
 export class Navbar extends Component {
-
     handleLogout(e){
         this.props.dispatch(logout());
     }
