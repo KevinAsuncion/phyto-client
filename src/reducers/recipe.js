@@ -24,8 +24,8 @@ var searchResults = [
 ]
 
 const initialState = {
-    recipes: [],
-    favoriteRecipes: [],
+    recipes: [...searchResults],
+    favoriteRecipes: [...searchResults],
     loggedIn: false
 };
 

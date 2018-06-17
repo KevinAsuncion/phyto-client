@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Myrecipes.css';
+import requiresLogin from './Requires-login'
 import Recipelist from './Recipelist';
+import './Myrecipes.css';
 
 export class Myrecipes extends Component {
     
@@ -17,7 +18,7 @@ export class Myrecipes extends Component {
 }
 
 const mapStateToProps = state => ({
-    myRecipes: state.favoriteRecipes
+    myRecipes: state.recipe.favoriteRecipes
 })
 
-export default connect(mapStateToProps)(Myrecipes)
+export default requiresLogin()(connect(mapStateToProps)(Myrecipes));

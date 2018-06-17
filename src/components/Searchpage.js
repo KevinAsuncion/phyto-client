@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Searchpage.css'
+import requiresLogin from './Requires-login'
 import Recipelist from './Recipelist'
 import { getSearchResults } from '../actions/recipe-actions'
+import './Searchpage.css'
 
 export class Searchpage extends Component {
   
@@ -34,7 +35,7 @@ export class Searchpage extends Component {
 }
 
 const mapStateToProps = state => ({
-    recipes: state.recipes
+    recipes: state.recipe.recipes
 })
 
-export default connect(mapStateToProps)(Searchpage);
+export default requiresLogin()(connect(mapStateToProps)(Searchpage));

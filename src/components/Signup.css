@@ -15,7 +15,12 @@
     border-radius: 5px;
     border: none;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
+.form-error {
+    color: red;
+    font-size: 14px; 
+    font-weight: normal
 }
 
 .signup-form input {

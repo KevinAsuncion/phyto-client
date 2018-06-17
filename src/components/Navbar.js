@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import './Navbar.css'
+import { clearAuth } from '../actions/auth';
+import { clearAuthToken } from '../local-storage'
 import {logout} from '../actions/recipe-actions'
+import './Navbar.css'
 
 export class Navbar extends Component {
     handleLogout(e){
-        this.props.dispatch(logout());
+        this.props.dispatch(clearAuth());
+        clearAuthToken();
     }
 
     render() {
@@ -37,7 +40,7 @@ export class Navbar extends Component {
 }
 
 const mapStateToProps = state =>({
-    loggedIn: state.loggedIn
+    loggedIn: state.auth.currentUser !== null
 })
 
 export default connect(mapStateToProps)(Navbar)
