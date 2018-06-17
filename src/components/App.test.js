@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { Provider } from 'react-redux'
-import { store } from '../store'
+import { shallow } from "enzyme";
+import configure from "../setupTests"
+import store from "../store";
+import { Provider } from "react-redux";
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-    <Provider store={store}>
-      ReactDOM.render(<App />, div);
-    </Provider>
-  ReactDOM.unmountComponentAtNode(div);
-});
+describe("App", () => {
+  it("Renders without crashing", () => {
+    shallow(
+      <Provider store={store}>
+        <App />
+      </Provider>
+    )
+  })
+})
