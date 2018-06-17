@@ -12,6 +12,7 @@ export class Searchpage extends Component {
        this.props.dispatch(getSearchResults());
        this.textInput.value = '';
    }
+   
     render() {
         return (
             <div className="searchpage-container">
