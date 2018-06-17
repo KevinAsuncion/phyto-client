@@ -22,6 +22,8 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "enzyme-adapter-react-16": "^1.1.1"
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^23.1.0",
+    "react-test-renderer": "^16.4.1"
   }
 }
