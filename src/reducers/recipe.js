@@ -2,7 +2,8 @@ import {
     GET_SEARCH_RESULTS_SUCCESS, 
     SAVED_RECIPE_SUCCESS, 
     DELETE_RECIPE,
-    GET_SAVED_RECIPES_SUCCESS
+    GET_SAVED_RECIPES_SUCCESS,
+    // DELETE_SAVED_RECIPE_SUCCESS
 } from '../actions/recipe-actions'
 
 const initialState = {
@@ -20,12 +21,12 @@ export const recipeReducer = (state = initialState, action) => {
     //     return Object.assign({}, state, {
     //         favoriteRecipes: [...state.favoriteRecipes, action.savedRecipe] 
     //     })   
-    } else if (action.type === DELETE_RECIPE) {
-        return Object.assign({}, state, {
-            favoriteRecipes: state.favoriteRecipes.filter((recipe)=>{
-                return recipe.title !== action.title
-            })
-        })
+    // } else if (action.type === DELETE_SAVED_RECIPE_SUCCESS) {
+    //     return Object.assign({}, state, {
+    //         favoriteRecipes: state.favoriteRecipes.fitler((recipe) => {
+    //             recipe.id !== action.id
+    //         })
+    //     })
     } else if (action.type === GET_SAVED_RECIPES_SUCCESS){
         return Object.assign({},state, {
             favoriteRecipes: action.savedRecipes

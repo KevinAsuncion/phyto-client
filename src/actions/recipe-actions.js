@@ -1,11 +1,12 @@
 import { API_BASE_URL } from '../config'
 import { normalizeResponseErrors} from './utils'
+
 //SEARCHPAGE
 export const getSearchResults = (searchTerm, count) => dispatch => {
     //dispatch search request
     const APP_ID = '54f6a76e'
     const APP_KEY = 'ed9fa62cc29a1ae5e51dff6c1f623e40'
-    return fetch(`https://api.edamam.com/search?q=${searchTerm}&app_id=${APP_ID}&app_key=${APP_KEY}&health=vegan&health=alcohol-free`)
+    return fetch(`https://api.edamam.com/search?q=${searchTerm}&app_id=${APP_ID}&app_key=${APP_KEY}&health=vegan&health=alcohol-free&to=12`)
         .then((res) => res.json())
         .then(res => res.hits.map(item=>{
             return {
@@ -55,7 +56,6 @@ export const saveRecipe = savedRecipe => (dispatch, getState) => {
 
 
 //Get Favorite Recipes 
-
 export const getSavedRecipes = () => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/recipes`, {
@@ -66,25 +66,39 @@ export const getSavedRecipes = () => (dispatch, getState) => {
         }
     })
     .then(res => res.json())
-    .then(res => console.log(res.recipes))
-    // .then(res => dispatch(getSavedRecipesSuccess(res.recipes)))
+    .then(res => dispatch(getSavedRecipesSuccess(res.recipes)))
     .catch(err => {
         console.error(err);
     })
 }
 
 export const GET_SAVED_RECIPES_SUCCESS = 'GET_SAVED_RECIPES_SUCCESS'
-export const getSavedRecipesSuccess = (savedRecipes) => {
-    type: GET_SAVED_RECIPES_SUCCESS
+export const getSavedRecipesSuccess = (savedRecipes) => ({
+    type: GET_SAVED_RECIPES_SUCCESS,
     savedRecipes
-}
-
-
+})
 
 
 //Delete favorite recipes 
-export const DELETE_RECIPE = 'DELETE_RECIPE'
-export const deleteRecipe = (title) => ({
-    type: DELETE_RECIPE,
-    title: title
-})
+
+export const deleteSavedRecipe = (id) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/recipes/${id}`, {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${authToken}`
+        }
+    })
+        .then(res => dispatch(getSavedRecipes()))
+        .catch(err => {
+            console.error(err);
+        })
+}
+
+// export const DELETE_SAVED_RECIPE_SUCCESS = 'DELETE_SAVED_RECIPE_SUCCESS'
+// export const deleteSavedRecipeSuccess = (id) => ({
+//     type: DELETE_SAVED_RECIPE_SUCCESS,
+//     id
+// })
+

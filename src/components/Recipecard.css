@@ -1,10 +1,22 @@
 .recipe-card  {
     width: 200px; 
-    margin: 10px 20px;
+    margin: 20px 20px;
     overflow: hidden;
     font-weight: bold;
     border: .5px solid lightgray;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
+}
+
+.recipe-card img {
+    width: 200px; 
+    height: 200px;
+}
+
+.recipe-card p {
+    min-height: 55px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 12px;
 }

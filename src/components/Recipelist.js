@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Recipecard from './Recipecard';
 import { connect } from 'react-redux';
-import { saveRecipe, deleteRecipe } from '../actions/recipe-actions';
+import { saveRecipe, deleteSavedRecipe } from '../actions/recipe-actions';
 import './Recipelist.css';
 
 export class Recipelist extends Component {
@@ -18,8 +18,8 @@ export class Recipelist extends Component {
     }
 
     handleDelete(e){
-        const title = e.target.parentNode.previousSibling.lastElementChild.textContent;
-        this.props.dispatch(deleteRecipe(title));
+        const id = e.target.parentNode.previousSibling.firstElementChild.getAttribute('data-id')
+        this.props.dispatch(deleteSavedRecipe(id));
     }
     
     render() {
