@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './Recipelist.css';
 import Recipecard from './Recipecard';
 import { connect } from 'react-redux';
-import { saveRecipe, deleteRecipe } from '../actions/recipe-actions'
+import { saveRecipe, deleteRecipe } from '../actions/recipe-actions';
+import './Recipelist.css';
 
 export class Recipelist extends Component {
     handleSave(e){
@@ -19,13 +19,11 @@ export class Recipelist extends Component {
 
     handleDelete(e){
         const title = e.target.parentNode.previousSibling.lastElementChild.textContent;
-        console.log(title);
         this.props.dispatch(deleteRecipe(title));
     }
     
     render() {
-        //Todo handleRemove, handleSave 
-       
+        
         let btn
         if(this.props.type === "myrecipes"){
             btn = (
@@ -36,10 +34,10 @@ export class Recipelist extends Component {
                 <button className="save-button" onClick={(e)=>this.handleSave(e)}><i className="far fa-heart" /> Save</button> 
             )
         }
-       
+    
         const recipes = this.props.recipes 
         const recipesList = recipes.map((recipe, index) => {
-            return <div className="recipe-card-container" key={recipe.title}>
+            return <div className="recipe-card-container" key={index}>
                 <Recipecard {...recipe} />
                 <div className="recipe-card-buttons">
                     {btn}
@@ -54,5 +52,6 @@ export class Recipelist extends Component {
         );
     }
 }
+
 
 export default connect()(Recipelist)

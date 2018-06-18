@@ -1,27 +1,86 @@
-//Searchpage
-export const GET_SEARCH_RESULTS = 'GET_SEARCH_RESULTS'
-export const getSearchResults = () => ({
-    type: GET_SEARCH_RESULTS
-})
+import { API_BASE_URL } from '../config'
+import { normalizeResponseErrors} from './utils'
+//SEARCHPAGE
+export const getSearchResults = (searchTerm, count) => dispatch => {
+    //dispatch search request
+    const APP_ID = '54f6a76e'
+    const APP_KEY = 'ed9fa62cc29a1ae5e51dff6c1f623e40'
+    return fetch(`https://api.edamam.com/search?q=${searchTerm}&app_id=${APP_ID}&app_key=${APP_KEY}&health=vegan&health=alcohol-free`)
+        .then((res) => res.json())
+        .then(res => res.hits.map(item=>{
+            return {
+                image_url: item.recipe.image,
+                title: item.recipe.label,
+                recipe_url: item.recipe.url
+            }
+        }))
+        .then(recipes => dispatch(getSearchResultsSuccess(recipes)))
+        .catch(err=>{
+            //dispatcherror
+            //dispatch - not loading 
+            console.error(err)
+        })
+} 
 
-//Login
-export const LOGIN = 'LOGIN'
-export const login = () => ({
-    type: LOGIN
-})
-
-//logout
-export const LOGOUT = 'LOGOUT'
-export const logout = () => ({
-    type: LOGOUT
-})
+export const GET_SEARCH_RESULTS_SUCCESS = 'SEARCH_RESULTS_SUCCESS';
+export const getSearchResultsSuccess = recipes => ({
+    type: GET_SEARCH_RESULTS_SUCCESS,
+    recipes
+});
 
 //Save favorite recipes
-export const SAVE_RECIPE = 'SAVE_RECIPE'
-export const saveRecipe = (savedRecipe) => ({
-    type: SAVE_RECIPE,
-    savedRecipe: savedRecipe
-})
+
+export const saveRecipe = savedRecipe => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/recipes`, {
+        method: 'POST',
+        body: JSON.stringify(savedRecipe),
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${authToken}`
+        }
+    })
+    .then(res => res.json())
+    .then(res => console.log(res))
+    .catch(err=> {
+        console.error(err.message);
+    })
+}
+
+// export const SAVED_RECIPE_SUCCESS = 'SAVED_RECIPE_SUCCESS'
+// export const savedRecipeSuccess = savedRecipe => ({
+//     type: SAVED_RECIPE_SUCCESS,
+//     savedRecipe
+// })
+
+
+//Get Favorite Recipes 
+
+export const getSavedRecipes = () => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/recipes`, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${authToken}`
+        }
+    })
+    .then(res => res.json())
+    .then(res => console.log(res.recipes))
+    // .then(res => dispatch(getSavedRecipesSuccess(res.recipes)))
+    .catch(err => {
+        console.error(err);
+    })
+}
+
+export const GET_SAVED_RECIPES_SUCCESS = 'GET_SAVED_RECIPES_SUCCESS'
+export const getSavedRecipesSuccess = (savedRecipes) => {
+    type: GET_SAVED_RECIPES_SUCCESS
+    savedRecipes
+}
+
+
+
 
 //Delete favorite recipes 
 export const DELETE_RECIPE = 'DELETE_RECIPE'

@@ -9,26 +9,34 @@ export class Searchpage extends Component {
   
    handleSubmit(e){
        e.preventDefault();
-       this.props.dispatch(getSearchResults());
-       this.textInput.value = '';
+       this.input.value.trim();
+       this.props.dispatch(getSearchResults(this.input.value));
+       console.log(this.input.value)
+       console.log(this.props.recipes.length)
+       this.input.value = '';
    }
-   
+
     render() {
+        let showMoreBtn
+        if(this.props.recipes.length > 0 ){
+            showMoreBtn = (<button> Show More </button>)
+        }
         return (
             <div className="searchpage-container">
                 <div className="searchbox-container">
-                    <form onSubmit={(e) => this.handleSubmit(e)}>
+                    <form onSubmit={(e) => this.handleSubmit(e,this.props.recipes.length)}>
                         <input 
                             type="text" 
                             autoComplete="off" 
                             placeholder="Search for recipes"
-                            ref={input => this.textInput = input}
+                            ref={input => this.input = input}
                         />
                         <button type="submit"><i className="fas fa-search"></i></button>
                     </form> 
                 </div> 
                 <div className="results-container">
                     <Recipelist recipes={this.props.recipes} type="searchrecipes"/>
+                    {showMoreBtn}
                 </div> 
             </div>
         );
@@ -36,7 +44,8 @@ export class Searchpage extends Component {
 }
 
 const mapStateToProps = state => ({
-    recipes: state.recipe.recipes
+    recipes: state.recipe.recipes,
 })
+
 
 export default requiresLogin()(connect(mapStateToProps)(Searchpage));
