@@ -13,7 +13,7 @@ export const getSearchResults = (searchTerm, count) => dispatch => {
                 image_url: item.recipe.image,
                 title: item.recipe.label,
                 recipe_url: item.recipe.url
-            }
+            } 
         }))
         .then(recipes => dispatch(getSearchResultsSuccess(recipes)))
         .catch(err=>{
