@@ -8,7 +8,7 @@ export class Recipelist extends Component {
     handleSave(e){
        const image_url = e.target.parentNode.previousSibling.firstElementChild.getAttribute('src')
        const title = e.target.parentNode.previousSibling.lastElementChild.textContent
-       const recipe_url = e.target.nextSibling.firstElementChild.getAttribute('href')
+       const recipe_url = e.target.nextSibling.getAttribute('href')
        const savedRecipe = {
            image_url: image_url,
            title: title,
@@ -27,11 +27,11 @@ export class Recipelist extends Component {
         let btn
         if(this.props.type === "myrecipes"){
             btn = (
-                <button className="delete-button" onClick={(e) => this.handleDelete(e)}><i className="far fa-trash-alt" /> Delete</button> 
+                <button className="delete-button" onClick={(e) => this.handleDelete(e)}>Delete</button> 
             )
         } else if (this.props.type === "searchrecipes"){
             btn = (
-                <button className="save-button" onClick={(e)=>this.handleSave(e)}><i className="far fa-heart" /> Save</button> 
+                <button className="save-button" onClick={(e)=>this.handleSave(e)}>Save</button> 
             )
         }
     
@@ -41,7 +41,7 @@ export class Recipelist extends Component {
                 <Recipecard {...recipe} />
                 <div className="recipe-card-buttons">
                     {btn}
-                    <button className="view-button"> <a href={recipe.recipe_url} target="_blank"><i className="far fa-eye"/> View</a></button>
+                    <a href={recipe.recipe_url} target="_blank"><button className="view-button">View</button></a>
                 </div> 
             </div>
         })

@@ -2,14 +2,20 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
-import { clearAuthToken } from '../local-storage'
-import {logout} from '../actions/recipe-actions'
-import './Navbar.css'
+import { clearSearchResults } from '../actions/recipe-actions';
+import { clearAuthToken } from '../local-storage';
+import {logout} from '../actions/recipe-actions';
+import './Navbar.css';
 
 export class Navbar extends Component {
     handleLogout(e){
+        this.props.dispatch(clearSearchResults());
         this.props.dispatch(clearAuth());
         clearAuthToken();
+    }
+
+    handleClick(){
+        this.props.dispatch(clearSearchResults());
     }
 
     render() {
@@ -26,7 +32,7 @@ export class Navbar extends Component {
             navElements = (
                 <ul>
                     <Link to="/discover"><li>Discover</li></Link>
-                    <Link to="/myrecipes"><li>My Recipes</li></Link>
+                    <Link to="/myrecipes"><li onClick={()=> this.handleClick()}>My Recipes</li></Link>
                     <Link to="/"><li onClick={(e)=>this.handleLogout(e)}>Logout</li></Link>
                 </ul>  
             )

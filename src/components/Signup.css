@@ -47,9 +47,44 @@
     height: 40px;
     width: 100%;
     margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 5px; 
     background-color: green;
     font-size: 16px;
     color: white;
     border: none;
+    cursor: pointer;
+}
+
+.signup-form button:hover {
+    background-color: rgb(27, 177, 27);
+}
+
+@media only screen and (min-width:300px) and (max-width:450px){
+    .signup-container {
+       padding: 10px;
+    }
+    .signup-form input {
+        width: 250px;
+        height: 30px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+    .signup-form {
+        width: 280px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .signup-form button {
+        height: 40px;
+        width: 250px;
+
+    }
+    .signup-form label {
+        text-align: center;
+    }   
+   
 }

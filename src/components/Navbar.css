@@ -8,3 +8,10 @@
 .nav-bar-container li {
     margin-right: 20px; 
 }
+
+
+@media only screen and (min-width:300px) and (max-width:400px){
+    .nav-bar-container li {
+        font-size: 14px;    
+    }
+}

@@ -1,12 +1,10 @@
-import { API_BASE_URL } from '../config'
+import { API_BASE_URL, API_ID, API_KEY } from '../config'
 import { normalizeResponseErrors} from './utils'
 
 //SEARCHPAGE
-export const getSearchResults = (searchTerm, count) => dispatch => {
+export const getSearchResults = (searchTerm) => dispatch => {
     //dispatch search request
-    const APP_ID = '54f6a76e'
-    const APP_KEY = 'ed9fa62cc29a1ae5e51dff6c1f623e40'
-    return fetch(`https://api.edamam.com/search?q=${searchTerm}&app_id=${APP_ID}&app_key=${APP_KEY}&health=vegan&health=alcohol-free&to=12`)
+    return fetch(`https://api.edamam.com/search?q=${searchTerm}&app_id=${API_ID}&app_key=${API_KEY}&health=vegetarian&health=alcohol-free&to=12`)
         .then((res) => res.json())
         .then(res => res.hits.map(item=>{
             return {
@@ -101,4 +99,11 @@ export const deleteSavedRecipe = (id) => (dispatch, getState) => {
 //     type: DELETE_SAVED_RECIPE_SUCCESS,
 //     id
 // })
+
+//Clear Search Results 
+
+export const CLEAR_SEARCH_RESULTS = 'CLEAR_SEARCH_RESULTS'
+export const clearSearchResults = () => ({
+    type: CLEAR_SEARCH_RESULTS
+})
 

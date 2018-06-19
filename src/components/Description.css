@@ -1,6 +1,10 @@
+.description-container h2 {
+    margin-top: 30px;
+}
+
 .description-card-container {
     display: flex; 
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .description-card-container{
@@ -18,4 +22,13 @@
 
 .description-card p{
     font-size: 16px;
+    margin-bottom: 25px;
+}
+
+@media only screen and (min-width:300px) and (max-width:600px){
+    .description-card-container {
+        flex-direction: column;
+        align-items: center;
+
+    }
 }

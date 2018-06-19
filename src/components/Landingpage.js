@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import './Landingpage.css'
 import Hero from './Hero'
 import Description from './Description'
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 
-export default class Landingpage extends Component {
+export class Landingpage extends Component {
     render() {
+        if (this.props.loggedIn) {
+            return <Redirect to="/discover" />;
+        }
         return (
             <div className="landingpage-container">
                 <Hero />
@@ -14,3 +19,9 @@ export default class Landingpage extends Component {
         );
     }
 }
+
+const mapStateToProps = state => ({
+    loggedIn: state.auth.currentUser !== null
+});
+
+export default connect(mapStateToProps)(Landingpage);
