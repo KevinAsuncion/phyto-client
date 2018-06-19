@@ -17,9 +17,12 @@ export class Searchpage extends Component {
    }
 
     render() {
-        let showMoreBtn
-        if(this.props.recipes.length > 0 ){
-            showMoreBtn = (<button> Show More </button>)
+        let error,loader
+        if(this.props.loading){
+           loader = <div><p>Loading...</p></div>
+        }
+        if (this.props.error) {
+            error = <div><p>Looks like there was an error. Try your request again.</p></div>
         }
         return (
             <div className="searchpage-container">
@@ -35,8 +38,9 @@ export class Searchpage extends Component {
                     </form> 
                 </div> 
                 <div className="results-container">
+                    {error}
+                    {loader}
                     <Recipelist recipes={this.props.recipes} type="searchrecipes"/>
-                    {showMoreBtn}
                 </div> 
             </div>
         );
@@ -45,6 +49,8 @@ export class Searchpage extends Component {
 
 const mapStateToProps = state => ({
     recipes: state.recipe.recipes,
+    loading: state.recipe.loading,
+    error: state.recipe.error
 })
 
 

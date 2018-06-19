@@ -3,7 +3,7 @@ import { normalizeResponseErrors} from './utils'
 
 //SEARCHPAGE
 export const getSearchResults = (searchTerm) => dispatch => {
-    //dispatch search request
+    dispatch(getSearchRequest())
     return fetch(`https://api.edamam.com/search?q=${searchTerm}&app_id=${API_ID}&app_key=${API_KEY}&health=vegetarian&health=alcohol-free&to=12`)
         .then((res) => res.json())
         .then(res => res.hits.map(item=>{
@@ -25,6 +25,11 @@ export const GET_SEARCH_RESULTS_SUCCESS = 'SEARCH_RESULTS_SUCCESS';
 export const getSearchResultsSuccess = recipes => ({
     type: GET_SEARCH_RESULTS_SUCCESS,
     recipes
+});
+
+export const GET_SEARCH_REQUEST = 'GET_SEARCH_REQUEST';
+export const getSearchRequest = () => ({
+    type: GET_SEARCH_REQUEST
 });
 
 //Save favorite recipes
