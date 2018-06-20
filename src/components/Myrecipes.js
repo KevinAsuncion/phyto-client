@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import requiresLogin from './RequiresLogin'
-import Recipelist from './RecipeList';
+import requiresLogin from './Requireslogin'
+import Recipelist from './Recipelist';
 import { getSavedRecipes } from '../actions/recipe-actions'
 import './Myrecipes.css';
 

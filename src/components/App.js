@@ -7,7 +7,7 @@ import Footer from './Footer';
 import Login from './Login';
 import Signup from './Signup';
 import Searchpage from './Searchpage';
-import MyRecipes from './MyRecipes';
+import Myrecipes from './Myrecipes';
 
 export default class App extends Component {
   render() {
