@@ -16,7 +16,7 @@ export default class App extends Component {
         <div className="App">
           <header>
           <h1 className="App-title"><i className="fas fa-leaf"></i>Phyto</h1>
-            <NavBar/>
+            <NavBar />
           </header>
           <main>
             <Switch>
