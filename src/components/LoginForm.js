@@ -6,7 +6,7 @@ import { required, nonEmpty } from '../validators';
 import { Link } from 'react-router-dom';
 import './Login.css'
 
-export class Loginform extends Component {
+export class LoginForm extends Component {
     onSubmit(user) {
         return this.props.dispatch(login(user.username, user.password));
     }
@@ -46,7 +46,7 @@ export class Loginform extends Component {
                         />
                     {error}
                     <button disabled={this.props.pristine || this.props.submitting}>
-                        Log in
+                        {this.props.loading ? "Loading..." : "Log in"}
                      </button>
                     <p>New to Phyto? <Link to="/signup">Sign up</Link></p>
                 </form>
@@ -57,6 +57,6 @@ export class Loginform extends Component {
 export default reduxForm({
     form: 'login',
     onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
-})(Loginform);
+})(LoginForm);
 
 

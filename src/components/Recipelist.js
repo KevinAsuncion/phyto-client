@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Recipecard from './Recipecard';
+import RecipeCard from './RecipeCard';
 import { connect } from 'react-redux';
 import { saveRecipe, deleteSavedRecipe } from '../actions/recipe-actions';
-import './Recipelist.css';
+import './RecipeList.css';
 
-export class Recipelist extends Component {
+export class RecipeList extends Component {
     handleSave(e){
        const image_url = e.target.parentNode.previousSibling.firstElementChild.getAttribute('src')
        const title = e.target.parentNode.previousSibling.lastElementChild.textContent
@@ -38,7 +38,7 @@ export class Recipelist extends Component {
         const recipes = this.props.recipes 
         const recipesList = recipes.map((recipe, index) => {
             return <div className="recipe-card-container" key={index}>
-                <Recipecard {...recipe} />
+                <RecipeCard {...recipe} />
                 <div className="recipe-card-buttons">
                     {btn}
                     <a href={recipe.recipe_url} target="_blank"><button className="view-button">View</button></a>
@@ -54,4 +54,4 @@ export class Recipelist extends Component {
 }
 
 
-export default connect()(Recipelist)
+export default connect()(RecipeList)

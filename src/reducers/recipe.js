@@ -4,7 +4,10 @@ import {
     DELETE_RECIPE,
     GET_SAVED_RECIPES_SUCCESS,
     CLEAR_SEARCH_RESULTS, 
-    GET_SEARCH_REQUEST
+    GET_SEARCH_REQUEST,
+    GET_SEARCH_REQUEST_ERROR,
+    GET_SAVED_RECIPES_REQUEST,
+    GET_SAVED_RECIPES_REQUEST_ERROR
     // DELETE_SAVED_RECIPE_SUCCESS
 } from '../actions/recipe-actions'
 
@@ -28,11 +31,28 @@ export const recipeReducer = (state = initialState, action) => {
     } else if (action.type === GET_SAVED_RECIPES_SUCCESS){
         return Object.assign({},state, {
             favoriteRecipes: action.savedRecipes,
-            
+            loading: false,
+            error: false
         })
     } else if (action.type === GET_SEARCH_REQUEST) {
         return Object.assign({},state, {
-            loading: true
+            loading: true,
+            error: false
+        })
+    } else if (action.type === GET_SEARCH_REQUEST_ERROR) {
+        return Object.assign({}, state, {
+            loading: false,
+            error: true 
+        })
+    } else if(action.type === GET_SAVED_RECIPES_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true,
+            error: false
+        })
+    } else if(action.type === GET_SAVED_RECIPES_REQUEST_ERROR){
+        return Object.assign({}, state, {
+            loading: false,
+            error: true
         })
     }
     return state;

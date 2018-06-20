@@ -1,6 +1,10 @@
 .searchpage-container {
     min-height: 500px;
 }
+
+.searchpage-error {
+    color: red;
+}
 .searchbox-container {
     padding: 20px;
     width: 80%;

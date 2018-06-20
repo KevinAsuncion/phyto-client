@@ -15,8 +15,7 @@ export const getSearchResults = (searchTerm) => dispatch => {
         }))
         .then(recipes => dispatch(getSearchResultsSuccess(recipes)))
         .catch(err=>{
-            //dispatcherror
-            //dispatch - not loading 
+            dispatch(getSearchRequestError())
             console.error(err)
         })
 } 
@@ -30,6 +29,11 @@ export const getSearchResultsSuccess = recipes => ({
 export const GET_SEARCH_REQUEST = 'GET_SEARCH_REQUEST';
 export const getSearchRequest = () => ({
     type: GET_SEARCH_REQUEST
+});
+
+export const GET_SEARCH_REQUEST_ERROR = 'GET_SEARCH_REQUEST_ERROR';
+export const getSearchRequestError = () => ({
+    type: GET_SEARCH_REQUEST_ERROR
 });
 
 //Save favorite recipes
@@ -59,7 +63,9 @@ export const saveRecipe = savedRecipe => (dispatch, getState) => {
 
 
 //Get Favorite Recipes 
+
 export const getSavedRecipes = () => (dispatch, getState) => {
+    dispatch(getSavedRecipesRequest())
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/recipes`, {
         method: 'GET',
@@ -71,14 +77,25 @@ export const getSavedRecipes = () => (dispatch, getState) => {
     .then(res => res.json())
     .then(res => dispatch(getSavedRecipesSuccess(res.recipes)))
     .catch(err => {
+        dispatch(getSavedRecipesRequestError())
         console.error(err);
     })
 }
+
+export const GET_SAVED_RECIPES_REQUEST = 'GET_SAVED_RECIPES_REQUEST'
+export const getSavedRecipesRequest = () => ({
+    type: GET_SAVED_RECIPES_REQUEST
+})
 
 export const GET_SAVED_RECIPES_SUCCESS = 'GET_SAVED_RECIPES_SUCCESS'
 export const getSavedRecipesSuccess = (savedRecipes) => ({
     type: GET_SAVED_RECIPES_SUCCESS,
     savedRecipes
+})
+
+export const GET_SAVED_RECIPES_REQUEST_ERROR = 'GET_SAVED_RECIPES_REQUEST_ERROR'
+export const getSavedRecipesRequestError = () => ({
+    type: GET_SAVED_RECIPES_REQUEST_ERROR
 })
 
 
