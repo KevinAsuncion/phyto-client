@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 
-export class LandingPage extends Component {
+export class Landingpage extends Component {
     render() {
         if (this.props.loggedIn) {
             return <Redirect to="/discover" />;
@@ -23,4 +23,4 @@ const mapStateToProps = state => ({
     loggedIn: state.auth.currentUser !== null
 });
 
-export default connect(mapStateToProps)(LandingPage);
+export default connect(mapStateToProps)(Landingpage);

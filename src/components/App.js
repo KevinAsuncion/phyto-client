@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import './App.css';
 import Navbar from './Navbar';
-import LandingPage from './LandingPage';
+import Landingpage from './Landingpage';
 import Footer from './Footer';
 import Login from './Login';
 import Signup from './Signup';
@@ -20,7 +20,7 @@ export default class App extends Component {
           </header>
           <main>
             <Switch>
-              <Route exact path="/" component={LandingPage} />
+              <Route exact path="/" component={Landingpage} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/discover" component={SearchPage} />
