@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {Loginform} from './Loginform'
+import Loginform from './Loginform';
 import { Redirect } from 'react-router-dom';
 import './Login.css';
 

@@ -5,23 +5,21 @@ import { saveRecipe, deleteSavedRecipe } from '../actions/recipe-actions';
 import './Recipelist.css';
 
 export class Recipelist extends Component {
+   
     handleSave(e){
-       const image_url = e.target.parentNode.previousSibling.firstElementChild.getAttribute('src')
-       const title = e.target.parentNode.previousSibling.lastElementChild.textContent
-       const recipe_url = e.target.nextSibling.getAttribute('href')
        const savedRecipe = {
-           image_url: image_url,
-           title: title,
-           recipe_url: recipe_url 
-       }
-       this.props.dispatch(saveRecipe(savedRecipe))
+            image_url: e.target.parentNode.getAttribute('data-image'),
+            recipe_url: e.target.parentNode.getAttribute('data-url'),
+            title: e.target.parentNode.getAttribute('data-title')
+        }
+        this.props.dispatch(saveRecipe(savedRecipe))
     }
 
     handleDelete(e){
-        const id = e.target.parentNode.previousSibling.firstElementChild.getAttribute('data-id')
+        const id = e.target.parentNode.previousSibling.getAttribute('data-id')
         this.props.dispatch(deleteSavedRecipe(id));
     }
-    
+   
     render() {
         
         let btn
@@ -39,8 +37,8 @@ export class Recipelist extends Component {
         const recipesList = recipes.map((recipe, index) => {
             return <div className="recipe-card-container" key={index}>
                 <Recipecard {...recipe} />
-                <div className="recipe-card-buttons">
-                    {btn}
+                <div className="recipe-card-buttons" data-url={recipe.recipe_url} data-image={recipe.image_url} data-title={recipe.title}>
+                    {btn} 
                     <a href={recipe.recipe_url} target="_blank"><button className="view-button">View</button></a>
                 </div> 
             </div>
