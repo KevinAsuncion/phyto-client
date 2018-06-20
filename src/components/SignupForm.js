@@ -12,7 +12,6 @@ export class Signupform extends Component {
     onSubmit(values){
         const {fullname, username, password} = values;
         const user = {fullname, username, password}
-        console.log(user)
         return this.props 
             .dispatch(signupUser(user))
             .then(() => this.props.dispatch(login(username, password)));

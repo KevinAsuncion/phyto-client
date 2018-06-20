@@ -48,7 +48,7 @@ export class Loginform extends Component {
                     <button disabled={this.props.pristine || this.props.submitting}>
                         {this.props.loading ? "Loading..." : "Log in"}
                      </button>
-                    <p>New to Phyto? <Link to="/signup">Sign up</Link></p>
+                    <p>New to Phyto?<Link to="/signup"> Sign up</Link></p>
                 </form>
             </div>
         )}
