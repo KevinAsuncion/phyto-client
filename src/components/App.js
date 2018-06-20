@@ -6,7 +6,7 @@ import Landingpage from './Landingpage';
 import Footer from './Footer';
 import Login from './Login';
 import Signup from './Signup';
-import SearchPage from './SearchPage';
+import Searchpage from './Searchpage';
 import MyRecipes from './MyRecipes';
 
 export default class App extends Component {
@@ -23,7 +23,7 @@ export default class App extends Component {
               <Route exact path="/" component={Landingpage} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
-              <Route exact path="/discover" component={SearchPage} />
+              <Route exact path="/discover" component={Searchpage} />
               <Route exact path="/myrecipes" component={MyRecipes} />
             </Switch>
           </main> 

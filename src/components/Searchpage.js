@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import requiresLogin from './RequiresLogin'
 import RecipeList from './RecipeList'
 import { getSearchResults } from '../actions/recipe-actions'
-import './SearchPage.css'
+import './Searchpage.css'
 
-export class SearchPage extends Component {
+export class Searchpage extends Component {
   
    handleSubmit(e){
        e.preventDefault();
@@ -53,4 +53,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default requiresLogin()(connect(mapStateToProps)(SearchPage));
+export default requiresLogin()(connect(mapStateToProps)(Searchpage));
