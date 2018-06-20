@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import requiresLogin from './RequiresLogin'
 import Recipelist from './RecipeList';
 import { getSavedRecipes } from '../actions/recipe-actions'
-import './MyRecipes.css';
+import './Myrecipes.css';
 
-export class MyRecipes extends Component {
+export class Myrecipes extends Component {
     componentDidMount(){
         this.props.dispatch(getSavedRecipes());
     }
@@ -35,4 +35,4 @@ const mapStateToProps = state => ({
     loading: state.recipe.loading
 })
 
-export default requiresLogin()(connect(mapStateToProps)(MyRecipes));
+export default requiresLogin()(connect(mapStateToProps)(Myrecipes));
