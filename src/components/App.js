@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import './App.css';
-import NavBar from './NavBar';
+import Navbar from './Navbar';
 import LandingPage from './LandingPage';
 import Footer from './Footer';
 import Login from './Login';
@@ -16,7 +16,7 @@ export default class App extends Component {
         <div className="App">
           <header>
           <h1 className="App-title"><i className="fas fa-leaf"></i>Phyto</h1>
-            <NavBar />
+            <Navbar />
           </header>
           <main>
             <Switch>

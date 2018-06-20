@@ -5,9 +5,9 @@ import { clearAuth } from '../actions/auth';
 import { clearSearchResults } from '../actions/recipe-actions';
 import { clearAuthToken } from '../local-storage';
 import {logout} from '../actions/recipe-actions';
-import './NavBar.css';
+import './Navbar.css';
 
-export class NavBar extends Component {
+export class Navbar extends Component {
     handleLogout(e){
         this.props.dispatch(clearSearchResults());
         this.props.dispatch(clearAuth());
@@ -49,5 +49,5 @@ const mapStateToProps = state =>({
     loggedIn: state.auth.currentUser !== null
 })
 
-export default connect(mapStateToProps)(NavBar)
+export default connect(mapStateToProps)(Navbar)
 
