@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import SignupForm from './SignupForm'
+import Signupform from './Signupform'
 import './Signup.css'
 
 export function Signup(props) {
@@ -11,7 +11,7 @@ export function Signup(props) {
     return (
         <div className="signup-container">
             <h2>Signup</h2>
-            <SignupForm loading={props.loading} />
+            <Signupform loading={props.loading} />
         </div>
     );
 }

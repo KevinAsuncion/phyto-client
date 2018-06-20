@@ -6,7 +6,7 @@ import { required, nonEmpty } from '../validators';
 import { Link } from 'react-router-dom';
 import './Login.css'
 
-export class LoginForm extends Component {
+export class Loginform extends Component {
     onSubmit(user) {
         return this.props.dispatch(login(user.username, user.password));
     }
@@ -57,6 +57,6 @@ export class LoginForm extends Component {
 export default reduxForm({
     form: 'login',
     onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
-})(LoginForm);
+})(Loginform);
 
 

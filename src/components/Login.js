@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import  LoginForm  from './LoginForm'
+import  Loginform  from './Loginform'
 import { Redirect } from 'react-router-dom'
 import './Login.css'
 
@@ -11,7 +11,7 @@ export function Login(props) {
     return (
         <div className="login-container">
             <h2>Login</h2>
-            <LoginForm loading={props.loading}/>
+            <Loginform loading={props.loading}/>
             <div>
                 <p>Demo Account</p>
                 <p>Username: demouser</p>

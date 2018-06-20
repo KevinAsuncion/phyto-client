@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './RequiresLogin'
-import RecipeList from './RecipeList'
+import Recipelist from './Recipelist'
 import { getSearchResults } from '../actions/recipe-actions'
 import './Searchpage.css'
 
@@ -39,7 +39,7 @@ export class Searchpage extends Component {
                 <div className="results-container">
                     {error}
                     {loader}
-                    <RecipeList recipes={this.props.recipes} type="searchrecipes"/>
+                    <Recipelist recipes={this.props.recipes} type="searchrecipes"/>
                 </div> 
             </div>
         );

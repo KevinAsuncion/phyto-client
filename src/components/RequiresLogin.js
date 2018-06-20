@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 export default () => Component => {
-    function RequiresLogin(props) {
+    function Requireslogin(props) {
         const { authenticating, loggedIn, error, ...passThroughProps } = props;
         if (authenticating) {
             return <div>Logging in...</div>;
@@ -15,7 +15,7 @@ export default () => Component => {
     }
 
     const displayName = Component.displayName || Component.name || 'Component';
-    RequiresLogin.displayName = `RequiresLogin(${displayName})`;
+    Requireslogin.displayName = `Requireslogin(${displayName})`;
 
     const mapStateToProps = (state, props) => ({
         authenticating: state.auth.loading,
@@ -23,5 +23,5 @@ export default () => Component => {
         error: state.auth.error
     });
 
-    return connect(mapStateToProps)(RequiresLogin);
+    return connect(mapStateToProps)(Requireslogin);
 };

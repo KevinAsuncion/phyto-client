@@ -1,7 +1,7 @@
 import React from 'react';
-import './RecipeCard.css';
+import './Recipecard.css';
 
-export default function RecipeCard(props) {
+export default function Recipecard(props) {
     if(props.id){
         return (
             <div className="recipe-card">

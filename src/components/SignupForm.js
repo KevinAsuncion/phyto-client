@@ -8,7 +8,7 @@ import { required, nonEmpty, matches, length, isTrimmed } from '../validators';
 const passwordLength = length({ min: 10, max: 72 });
 const matchesPassword = matches('password');
 
-export class SignupForm extends Component {
+export class Signupform extends Component {
     onSubmit(values){
         const {fullname, username, password} = values;
         const user = {fullname, username, password}
@@ -77,4 +77,4 @@ export default reduxForm({
     form: 'signup',
     onSubmitFail: (errors, dispatch) =>
         dispatch(focus('signup', Object.keys(errors)[0]))
-})(SignupForm);
+})(Signupform);
