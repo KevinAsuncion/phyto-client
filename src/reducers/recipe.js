@@ -12,7 +12,8 @@ const initialState = {
     recipes: [],
     favoriteRecipes: [],
     loading: false,
-    error: false
+    error: false, 
+    searchCount: 0,
 };
 
 export const recipeReducer = (state = initialState, action) => {
