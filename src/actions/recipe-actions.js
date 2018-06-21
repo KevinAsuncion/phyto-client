@@ -1,5 +1,4 @@
 import { API_BASE_URL, API_ID, API_KEY } from '../config'
-import { normalizeResponseErrors} from './utils'
 
 //SEARCHPAGE
 export const getSearchResults = (searchTerm) => dispatch => {

@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { clearSearchResults } from '../actions/recipe-actions';
 import { clearAuthToken } from '../local-storage';
-import {logout} from '../actions/recipe-actions';
 import './Navbar.css';
 
 export class Navbar extends Component {

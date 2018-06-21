@@ -50,6 +50,7 @@ export class Signupform extends Component {
                             type="password"
                             placeholder="Enter password"
                             name="password"
+                            validate={[required, nonEmpty, matchesPassword, passwordLength]}
                         />
                     <label htmlFor="confirmPassword">Confirm Password</label>
                             <Field
@@ -58,7 +59,7 @@ export class Signupform extends Component {
                             type="password"
                             placeholder="Enter password again"
                             name="confirmPassword"
-                            validate={[required, nonEmpty, matchesPassword]}
+                            validate={[required, nonEmpty, matchesPassword, passwordLength]}
                         />
                     <button
                         type="submit"
