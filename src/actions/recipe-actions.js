@@ -1,6 +1,6 @@
 import { API_BASE_URL, API_ID, API_KEY } from '../config'
 
-//SEARCHPAGE
+//Searchpage
 export const getSearchResults = (searchTerm) => dispatch => {
     dispatch(getSearchRequest())
     return fetch(`https://api.edamam.com/search?q=${searchTerm}&app_id=${API_ID}&app_key=${API_KEY}&health=vegetarian&health=alcohol-free&to=12`)
@@ -35,7 +35,7 @@ export const getSearchRequestError = () => ({
     type: GET_SEARCH_REQUEST_ERROR
 });
 
-//Save favorite recipes
+//Save Favorite Recipes
 
 export const saveRecipe = savedRecipe => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
