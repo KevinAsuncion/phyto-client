@@ -42,7 +42,6 @@ export class Signupform extends Component {
                             name="username"
                             validate={[required, nonEmpty, isTrimmed]}
                         />
-    
                     <label htmlFor="password">Password</label>
                             <Field 
                             component={Input}
