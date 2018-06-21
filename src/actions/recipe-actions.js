@@ -54,7 +54,7 @@ export const saveRecipe = savedRecipe => (dispatch, getState) => {
     })
 }
 
-//Get Favorite Recipes 
+//Get Favorite Recipes
 
 export const getSavedRecipes = () => (dispatch, getState) => {
     dispatch(getSavedRecipesRequest())
@@ -89,7 +89,6 @@ export const GET_SAVED_RECIPES_REQUEST_ERROR = 'GET_SAVED_RECIPES_REQUEST_ERROR'
 export const getSavedRecipesRequestError = () => ({
     type: GET_SAVED_RECIPES_REQUEST_ERROR
 })
-
 
 //Delete favorite recipes 
 
