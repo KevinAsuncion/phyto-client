@@ -54,13 +54,6 @@ export const saveRecipe = savedRecipe => (dispatch, getState) => {
     })
 }
 
-// export const SAVED_RECIPE_SUCCESS = 'SAVED_RECIPE_SUCCESS'
-// export const savedRecipeSuccess = savedRecipe => ({
-//     type: SAVED_RECIPE_SUCCESS,
-//     savedRecipe
-// })
-
-
 //Get Favorite Recipes 
 
 export const getSavedRecipes = () => (dispatch, getState) => {
@@ -114,12 +107,6 @@ export const deleteSavedRecipe = (id) => (dispatch, getState) => {
             console.error(err);
         })
 }
-
-// export const DELETE_SAVED_RECIPE_SUCCESS = 'DELETE_SAVED_RECIPE_SUCCESS'
-// export const deleteSavedRecipeSuccess = (id) => ({
-//     type: DELETE_SAVED_RECIPE_SUCCESS,
-//     id
-// })
 
 //Clear Search Results 
 
