@@ -39,7 +39,7 @@ export class Recipelist extends Component {
                 <Recipecard {...recipe} />
                 <div className="recipe-card-buttons" data-url={recipe.recipe_url} data-image={recipe.image_url} data-title={recipe.title}>
                     {btn} 
-                    <a href={recipe.recipe_url} target="_blank"><button className="view-button">View</button></a>
+                    <a href={recipe.recipe_url} target="_blank" rel="noopener noreferrer"><button className="view-button">View</button></a>
                 </div> 
             </div>
         })
