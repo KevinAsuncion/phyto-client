@@ -7,21 +7,17 @@ import './Searchpage.css'
 
 export class Searchpage extends Component {
    
-  
    handleSubmit(e){
        e.preventDefault();
-       
        const str = this.input.value.trim().toLowerCase();
        const meats = ['beef','pork','fish','chicken']
        const includesMeat = meats.find(meat => {
             return str.includes(meat)
        })
-       console.log(includesMeat)
        if(includesMeat){
             this.input.value = ''
             return this.props.dispatch(getSearchRequestError())
        }
-       
        if(this.input.value !== this.props.prevSearchTerm){
            this.props.dispatch(clearCount())
            this.props.dispatch(getSearchResults(this.input.value, 0));
@@ -37,16 +33,13 @@ export class Searchpage extends Component {
     }
       
     render() {
-        let error,loader, noResults,showMoreBtn
+        let error,loader,showMoreBtn
         if(this.props.loading){
            loader = <div><p>Loading...</p></div>
         }
         if(this.props.error) {
             error = <div className="searchpage-error"><p>Looks like there was an error. Try your request again.</p></div>
         }      
-        if (this.props.noSearchResults) {
-            noResults = <div><p>No results, try your request again.</p></div>
-        }
         if (this.props.recipes.length > 0){
             showMoreBtn = <button className="show-more-button" onClick={()=>this.handleShowMore(this.props.prevSearchTerm, this.props.count)}> Show More </button> 
         }
@@ -68,7 +61,6 @@ export class Searchpage extends Component {
                     {error}
                     {loader}
                     <Recipelist recipes={this.props.recipes} type="searchrecipes"/>
-                    {noResults}
                     {showMoreBtn}
                 </div> 
             </div>

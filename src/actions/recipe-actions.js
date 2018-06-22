@@ -49,7 +49,6 @@ export const getSearchRequestError = () => ({
 });
 
 //Save Favorite Recipes
-
 export const saveRecipe = savedRecipe => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/recipes`, {
@@ -67,7 +66,6 @@ export const saveRecipe = savedRecipe => (dispatch, getState) => {
 }
 
 //Get Favorite Recipes
-
 export const getSavedRecipes = () => (dispatch, getState) => {
     dispatch(getSavedRecipesRequest())
     const authToken = getState().auth.authToken;
@@ -103,7 +101,6 @@ export const getSavedRecipesRequestError = () => ({
 })
 
 //Delete favorite recipes 
-
 export const deleteSavedRecipe = (id) => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/recipes/${id}`, {
@@ -120,7 +117,6 @@ export const deleteSavedRecipe = (id) => (dispatch, getState) => {
 }
 
 //Clear Search Results 
-
 export const CLEAR_SEARCH_RESULTS = 'CLEAR_SEARCH_RESULTS'
 export const clearSearchResults = () => ({
     type: CLEAR_SEARCH_RESULTS

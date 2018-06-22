@@ -7,10 +7,11 @@ import './Recipelist.css';
 export class Recipelist extends Component {
    
     handleSave(e){
-       const savedRecipe = {
-            image_url: e.target.parentNode.getAttribute('data-image'),
-            recipe_url: e.target.parentNode.getAttribute('data-url'),
-            title: e.target.parentNode.getAttribute('data-title')
+        const card = e.target.parentNode
+        const savedRecipe = {
+            image_url: card.getAttribute('data-image'),
+            recipe_url: card.getAttribute('data-url'),
+            title: card.getAttribute('data-title')
         }
         this.props.dispatch(saveRecipe(savedRecipe))
     }
