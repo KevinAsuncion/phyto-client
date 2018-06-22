@@ -21,7 +21,7 @@ export class Recipelist extends Component {
     }
    
     render() {
-        
+       
         let btn
         if(this.props.type === "myrecipes"){
             btn = (
@@ -32,7 +32,7 @@ export class Recipelist extends Component {
                 <button className="save-button" onClick={(e)=>this.handleSave(e)}>Save</button> 
             )
         }
-    
+
         const recipes = this.props.recipes 
         const recipesList = recipes.map((recipe, index) => {
             return <div className="recipe-card-container" key={index}>
@@ -50,6 +50,7 @@ export class Recipelist extends Component {
         );
     }
 }
+
 
 
 export default connect()(Recipelist)

@@ -11,18 +11,23 @@ export class Searchpage extends Component {
        e.preventDefault();
        this.input.value.trim();
        this.props.dispatch(getSearchResults(this.input.value));
-       console.log(this.input.value)
        this.input.value = '';
     }
       
     render() {
-        let error,loader
+        let error,loader, noResults,showMoreBtn
         if(this.props.loading){
            loader = <div><p>Loading...</p></div>
         }
-        if (this.props.error) {
+        if(this.props.error) {
             error = <div className="searchpage-error"><p>Looks like there was an error. Try your request again.</p></div>
-        }   
+        }      
+        if (this.props.searched && this.props.recipes.length === 0 && !this.props.loading) {
+            noResults = <div><p>No Results, try your request again.</p></div>
+        }
+        if (this.props.recipes.length > 0){
+            showMoreBtn = <button className="show-more-button"> Show More </button> 
+        }
         return (
             <div className="searchpage-container">
                 <div className="searchbox-container">
@@ -32,6 +37,7 @@ export class Searchpage extends Component {
                             autoComplete="off" 
                             placeholder="Search for recipes"
                             ref={input => this.input = input}
+                            required="required"
                         />
                         <button type="submit"><i className="fas fa-search"></i></button>
                     </form> 
@@ -40,6 +46,8 @@ export class Searchpage extends Component {
                     {error}
                     {loader}
                     <Recipelist recipes={this.props.recipes} type="searchrecipes"/>
+                    {noResults}
+                    {showMoreBtn}
                 </div> 
             </div>
         );
@@ -49,7 +57,8 @@ export class Searchpage extends Component {
 const mapStateToProps = state => ({
     recipes: state.recipe.recipes,
     loading: state.recipe.loading,
-    error: state.recipe.error
+    error: state.recipe.error,
+    searched: state.recipe.searched 
 })
 
 

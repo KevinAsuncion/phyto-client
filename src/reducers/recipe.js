@@ -12,25 +12,28 @@ const initialState = {
     recipes: [],
     favoriteRecipes: [],
     loading: false,
-    error: false, 
-    searchCount: 0,
+    error: false,
+    searched: false
 };
 
 export const recipeReducer = (state = initialState, action) => {
     if(action.type === GET_SEARCH_RESULTS_SUCCESS){
         return Object.assign({}, state, { 
             recipes: action.recipes,
-            loading: false
+            loading: false,
+            searched: true
         })
     } else if (action.type === CLEAR_SEARCH_RESULTS){
         return Object.assign({}, state, {
-            recipes: []
+            recipes: [],
+            searched: false 
         })
     } else if (action.type === GET_SAVED_RECIPES_SUCCESS){
         return Object.assign({},state, {
             favoriteRecipes: action.savedRecipes,
             loading: false,
-            error: false
+            error: false, 
+            searched: false 
         })
     } else if (action.type === GET_SEARCH_REQUEST) {
         return Object.assign({},state, {
@@ -40,7 +43,7 @@ export const recipeReducer = (state = initialState, action) => {
     } else if (action.type === GET_SEARCH_REQUEST_ERROR) {
         return Object.assign({}, state, {
             loading: false,
-            error: true 
+            error: true
         })
     } else if(action.type === GET_SAVED_RECIPES_REQUEST) {
         return Object.assign({}, state, {

@@ -20,7 +20,7 @@ export const getSearchResults = (searchTerm) => dispatch => {
 } 
 
 export const GET_SEARCH_RESULTS_SUCCESS = 'SEARCH_RESULTS_SUCCESS';
-export const getSearchResultsSuccess = recipes => ({
+export const getSearchResultsSuccess = (recipes) => ({
     type: GET_SEARCH_RESULTS_SUCCESS,
     recipes
 });
@@ -48,7 +48,6 @@ export const saveRecipe = savedRecipe => (dispatch, getState) => {
         }
     })
     .then(res => res.json())
-    .then(res => console.log(res))
     .catch(err=> {
         console.error(err.message);
     })
