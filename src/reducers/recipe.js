@@ -5,7 +5,8 @@ import {
     GET_SEARCH_REQUEST,
     GET_SEARCH_REQUEST_ERROR,
     GET_SAVED_RECIPES_REQUEST,
-    GET_SAVED_RECIPES_REQUEST_ERROR
+    GET_SAVED_RECIPES_REQUEST_ERROR,
+    CLEAR_COUNT
 } from '../actions/recipe-actions'
 
 const initialState = {
@@ -15,7 +16,7 @@ const initialState = {
     error: false,
     searched: false,
     count: 0, 
-    prevSearchTerm: ''
+    prevSearchTerm: '',
 };
 
 export const recipeReducer = (state = initialState, action) => {
@@ -25,7 +26,7 @@ export const recipeReducer = (state = initialState, action) => {
             loading: false,
             searched: true,
             count:  state.count + 12,
-            prevSearchTerm:  action.searchTerm
+            prevSearchTerm:  action.searchTerm, 
         })
     } else if (action.type === CLEAR_SEARCH_RESULTS){
         return Object.assign({}, state, {
@@ -49,7 +50,9 @@ export const recipeReducer = (state = initialState, action) => {
     } else if (action.type === GET_SEARCH_REQUEST_ERROR) {
         return Object.assign({}, state, {
             loading: false,
-            error: true
+            error: true,
+            count: 0,
+            prevSearchTerm: ''
         })
     } else if(action.type === GET_SAVED_RECIPES_REQUEST) {
         return Object.assign({}, state, {
@@ -60,6 +63,10 @@ export const recipeReducer = (state = initialState, action) => {
         return Object.assign({}, state, {
             loading: false,
             error: true
+        })
+    } else if(action.type === CLEAR_COUNT) {
+        return Object.assign({}, state, {
+            count: 0
         })
     }
     return state;

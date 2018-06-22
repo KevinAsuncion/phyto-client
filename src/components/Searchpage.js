@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './Requireslogin'
 import Recipelist from './Recipelist'
-import { getSearchResults } from '../actions/recipe-actions'
+import { getSearchResults, clearCount, getSearchRequestError} from '../actions/recipe-actions'
 import './Searchpage.css'
 
 export class Searchpage extends Component {
@@ -10,12 +10,30 @@ export class Searchpage extends Component {
   
    handleSubmit(e){
        e.preventDefault();
-       this.input.value.trim();
-       this.props.dispatch(getSearchResults(this.input.value, 0));
-       this.input.value = '';
+       
+       const str = this.input.value.trim().toLowerCase();
+       const meats = ['beef','pork','fish','chicken']
+       const includesMeat = meats.find(meat => {
+            return str.includes(meat)
+       })
+       console.log(includesMeat)
+       if(includesMeat){
+            this.input.value = ''
+            return this.props.dispatch(getSearchRequestError())
+       }
+       
+       if(this.input.value !== this.props.prevSearchTerm){
+           this.props.dispatch(clearCount())
+           this.props.dispatch(getSearchResults(this.input.value, 0));
+           this.input.value = ''
+       } else {
+           this.props.dispatch(getSearchResults(this.input.value, 0));
+           this.input.value = ''
+       }
     }
+
     handleShowMore(prevSearchTerm,count){
-        this.props.dispatch(getSearchResults(prevSearchTerm, count))
+        this.props.dispatch(getSearchResults(prevSearchTerm, count)) 
     }
       
     render() {
@@ -26,8 +44,8 @@ export class Searchpage extends Component {
         if(this.props.error) {
             error = <div className="searchpage-error"><p>Looks like there was an error. Try your request again.</p></div>
         }      
-        if (this.props.searched && this.props.recipes.length === 0 && !this.props.loading) {
-            noResults = <div><p>No Results, try your request again.</p></div>
+        if (this.props.noSearchResults) {
+            noResults = <div><p>No results, try your request again.</p></div>
         }
         if (this.props.recipes.length > 0){
             showMoreBtn = <button className="show-more-button" onClick={()=>this.handleShowMore(this.props.prevSearchTerm, this.props.count)}> Show More </button> 
@@ -52,8 +70,6 @@ export class Searchpage extends Component {
                     <Recipelist recipes={this.props.recipes} type="searchrecipes"/>
                     {noResults}
                     {showMoreBtn}
-                    <div>{this.props.prevSearchTerm}</div>
-                    <div>{this.props.count}</div>
                 </div> 
             </div>
         );
@@ -66,7 +82,7 @@ const mapStateToProps = state => ({
     error: state.recipe.error,
     searched: state.recipe.searched,
     count: state.recipe.count,
-    prevSearchTerm: state.recipe.prevSearchTerm 
+    prevSearchTerm: state.recipe.prevSearchTerm
 })
 
 
