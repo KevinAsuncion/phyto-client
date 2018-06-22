@@ -6,12 +6,16 @@ import { getSearchResults } from '../actions/recipe-actions'
 import './Searchpage.css'
 
 export class Searchpage extends Component {
+   
   
    handleSubmit(e){
        e.preventDefault();
        this.input.value.trim();
-       this.props.dispatch(getSearchResults(this.input.value));
+       this.props.dispatch(getSearchResults(this.input.value, 0));
        this.input.value = '';
+    }
+    handleShowMore(prevSearchTerm,count){
+        this.props.dispatch(getSearchResults(prevSearchTerm, count))
     }
       
     render() {
@@ -26,7 +30,7 @@ export class Searchpage extends Component {
             noResults = <div><p>No Results, try your request again.</p></div>
         }
         if (this.props.recipes.length > 0){
-            showMoreBtn = <button className="show-more-button"> Show More </button> 
+            showMoreBtn = <button className="show-more-button" onClick={()=>this.handleShowMore(this.props.prevSearchTerm, this.props.count)}> Show More </button> 
         }
         return (
             <div className="searchpage-container">
@@ -48,6 +52,8 @@ export class Searchpage extends Component {
                     <Recipelist recipes={this.props.recipes} type="searchrecipes"/>
                     {noResults}
                     {showMoreBtn}
+                    <div>{this.props.prevSearchTerm}</div>
+                    <div>{this.props.count}</div>
                 </div> 
             </div>
         );
@@ -58,7 +64,9 @@ const mapStateToProps = state => ({
     recipes: state.recipe.recipes,
     loading: state.recipe.loading,
     error: state.recipe.error,
-    searched: state.recipe.searched 
+    searched: state.recipe.searched,
+    count: state.recipe.count,
+    prevSearchTerm: state.recipe.prevSearchTerm 
 })
 
 

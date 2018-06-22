@@ -1,9 +1,10 @@
 import { API_BASE_URL, API_ID, API_KEY } from '../config'
 
 //Searchpage
-export const getSearchResults = (searchTerm) => dispatch => {
+export const getSearchResults = (searchTerm,count) => dispatch => {
     dispatch(getSearchRequest())
-    return fetch(`https://api.edamam.com/search?q=${searchTerm}&app_id=${API_ID}&app_key=${API_KEY}&health=vegetarian&health=alcohol-free&to=12`)
+    const searchCount = count === 0 ? 12 : count + 12 
+    return fetch(`https://api.edamam.com/search?q=${searchTerm}&app_id=${API_ID}&app_key=${API_KEY}&health=vegetarian&health=alcohol-free&to=${searchCount}`)
         .then((res) => res.json())
         .then(res => res.hits.map(item=>{
             return {
@@ -12,7 +13,7 @@ export const getSearchResults = (searchTerm) => dispatch => {
                 recipe_url: item.recipe.url
             } 
         }))
-        .then(recipes => dispatch(getSearchResultsSuccess(recipes)))
+        .then(recipes => dispatch(getSearchResultsSuccess(recipes,searchTerm)))
         .catch(err=>{
             dispatch(getSearchRequestError())
             console.error(err)
@@ -20,9 +21,10 @@ export const getSearchResults = (searchTerm) => dispatch => {
 } 
 
 export const GET_SEARCH_RESULTS_SUCCESS = 'SEARCH_RESULTS_SUCCESS';
-export const getSearchResultsSuccess = (recipes) => ({
+export const getSearchResultsSuccess = (recipes,searchTerm) => ({
     type: GET_SEARCH_RESULTS_SUCCESS,
-    recipes
+    recipes,
+    searchTerm 
 });
 
 export const GET_SEARCH_REQUEST = 'GET_SEARCH_REQUEST';
