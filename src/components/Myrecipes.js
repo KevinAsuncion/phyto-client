@@ -19,7 +19,7 @@ export class Myrecipes extends Component {
         }
         return (
             <div className="myrecipes-container">
-                <div className="results-container">
+                <div className="results-container animated fadeIn">
                     {error}
                     {loader}
                     <Recipelist recipes={this.props.favoriteRecipes} type="myrecipes"/>

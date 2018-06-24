@@ -35,7 +35,7 @@ export class Recipelist extends Component {
                 </div>
         } else if (this.props.type === "searchrecipes") {
            return btn =
-               <div className="recipe-card-buttons">
+               <div className="recipe-card-buttons" >
                     <button 
                         data-url={recipe.recipe_url} 
                         data-image={recipe.image_url} 
@@ -51,7 +51,7 @@ export class Recipelist extends Component {
     render() {
         const recipes = this.props.recipes 
         const recipesList = recipes.map((recipe, index) => {
-            return <div className="recipe-card-container" key={index}>
+            return <div className="recipe-card-container animated fadeIn" key={index}>
                 <Recipecard {...recipe} />
                 {this.handleButtons(recipe)}
             </div>

@@ -60,10 +60,27 @@ export const saveRecipe = savedRecipe => (dispatch, getState) => {
         }
     })
     .then(res => res.json())
+    .then(() => dispatch(saveRecipeSuccess())) 
     .catch(err=> {
+        dispatch(saveRecipeError())
         console.error(err.message);
     })
 }
+
+export const SAVE_RECIPE_SUCCESS = 'SAVE_RECIPE_SUCCESS'
+export const saveRecipeSuccess = () => ({
+    type: SAVE_RECIPE_SUCCESS
+})
+
+export const SAVE_RECIPE_ERROR = 'SAVE_RECIPE_ERROR'
+export const saveRecipeError = () => ({
+    type: SAVE_RECIPE_ERROR
+})
+
+export const SAVE_RECIPE_REQUEST = 'SAVE_RECIPE_REQUEST';
+export const saveRecipeRequest = () => ({
+    type: SAVE_RECIPE_REQUEST
+});
 
 //Get Favorite Recipes
 export const getSavedRecipes = () => (dispatch, getState) => {

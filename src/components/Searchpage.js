@@ -33,7 +33,7 @@ export class Searchpage extends Component {
     }
       
     render() {
-        let error,loader,showMoreBtn
+        let error,loader,showMoreBtn,saveSuccess
         if(this.props.loading){
            loader = <div><p>Loading...</p></div>
         }
@@ -42,6 +42,9 @@ export class Searchpage extends Component {
         }      
         if (this.props.recipes.length > 0){
             showMoreBtn = <button className="show-more-button" onClick={()=>this.handleShowMore(this.props.prevSearchTerm, this.props.count)}> Show More </button> 
+        }
+        if(this.props.saved){
+            saveSuccess = <div className="save-success"><p>Recipe Saved.</p></div>
         }
         return (
             <div className="searchpage-container">
@@ -60,6 +63,7 @@ export class Searchpage extends Component {
                 <div className="results-container">
                     {error}
                     {loader}
+                    {saveSuccess}
                     <Recipelist recipes={this.props.recipes} type="searchrecipes"/>
                     {showMoreBtn}
                 </div> 
@@ -74,7 +78,8 @@ const mapStateToProps = state => ({
     error: state.recipe.error,
     searched: state.recipe.searched,
     count: state.recipe.count,
-    prevSearchTerm: state.recipe.prevSearchTerm
+    prevSearchTerm: state.recipe.prevSearchTerm,
+    saved: state.recipe.saved
 })
 
 
