@@ -24,7 +24,7 @@ export class Recipelist extends Component {
     handleButtons(recipe){
         let btn
         if (this.props.type === "myrecipes") {
-            return btn =
+            return (
                 <div className="recipe-card-buttons">
                     <button 
                         data-id={recipe.id} 
@@ -32,9 +32,9 @@ export class Recipelist extends Component {
                         onClick={(e) => this.handleDelete(e)}>
                         Delete</button>
                     <a href={recipe.recipe_url} target="_blank" rel="noopener noreferrer"><button className="view-button">View</button></a>
-                </div>
+                </div>)
         } else if (this.props.type === "searchrecipes") {
-           return btn =
+           return (
                <div className="recipe-card-buttons" >
                     <button 
                         data-url={recipe.recipe_url} 
@@ -44,7 +44,7 @@ export class Recipelist extends Component {
                         onClick={(e) => this.handleSave(e)}>
                         Save</button>
                     <a href={recipe.recipe_url} target="_blank" rel="noopener noreferrer"><button className="view-button">View</button></a>
-                </div>
+                </div>)
         }
     }
    
