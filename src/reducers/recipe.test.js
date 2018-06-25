@@ -8,6 +8,8 @@ import {
     GET_SAVED_RECIPES_REQUEST,
     GET_SAVED_RECIPES_REQUEST_ERROR,
     SAVE_RECIPE_SUCCESS,
+    DELETE_SAVED_RECIPE_ERROR,
+    DELETE_SAVED_RECIPE_REQUEST,
     SAVE_RECIPE_ERROR,
     SAVE_RECIPE_REQUEST,
     CLEAR_COUNT
@@ -25,6 +27,30 @@ describe('recipeReducer', () => {
             searched: false,
             count: 0,
             prevSearchTerm: '',
+            saved: false
+        })
+    })
+    it('should return saved recipes', () => {
+        const currentState = {
+            favoriteRecipes: [],
+            loading: false,
+            error: false,
+            searched: false,
+            saved: false
+        }
+        const savedRecipes = [
+            {
+                title: 'title',
+                recipe_url: 'recipeurl',
+                image_url: 'imageurl'
+            }
+        ]
+        const state = recipeReducer(currentState, { type: 'GET_SAVED_RECIPES_SUCCESS', savedRecipes: savedRecipes });
+        expect(state).toEqual({
+            favoriteRecipes: savedRecipes,
+            loading: false,
+            error: false,
+            searched: false,
             saved: false
         })
     })
@@ -74,6 +100,18 @@ describe('recipeReducer', () => {
         expect(state).toEqual({
             loading: true, 
             error: false
+        })
+    })
+
+    it('should set loading to false and error to true when get search request error', () => {
+        const currentState = {
+            loading: true,
+            error: false
+        }
+        const state = recipeReducer(currentState, { type: 'GET_SAVED_RECIPES_REQUEST_ERROR' })
+        expect(state).toEqual({
+            loading: false,
+            error: true
         })
     })
 })

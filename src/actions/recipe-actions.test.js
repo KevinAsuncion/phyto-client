@@ -20,7 +20,11 @@ import {
     saveRecipeRequest,
     SAVE_RECIPE_REQUEST,
     clearCount,
-    CLEAR_COUNT
+    CLEAR_COUNT,
+    DELETE_SAVED_RECIPE_ERROR,
+    deleteSavedRecipeError, 
+    DELETE_SAVED_RECIPE_REQUEST,
+    deleteSavedRecipeRequest
 } from './recipe-actions'
 
 describe('getSearchResultSuccess', () => {
@@ -115,5 +119,19 @@ describe('clearCount', () => {
     it('Should return the action', () => {
         const action = clearCount();
         expect(action.type).toEqual(CLEAR_COUNT);
+    })
+})
+
+describe('deleteSavedRecipeRequest', () => {
+    it('Should return the action', () => {
+        const action = deleteSavedRecipeRequest();
+        expect(action.type).toEqual(DELETE_SAVED_RECIPE_REQUEST);
+    })
+})
+
+describe('deleteSavedRecipeError', () => {
+    it('Should return the action', () => {
+        const action = deleteSavedRecipeError();
+        expect(action.type).toEqual(DELETE_SAVED_RECIPE_ERROR);
     })
 })
