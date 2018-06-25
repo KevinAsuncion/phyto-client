@@ -33,15 +33,47 @@ describe('recipeReducer', () => {
         const state = recipeReducer(currentState, { type: '_UNKNOWN' });
         expect(state).toEqual(currentState);
     })
+    it('should clear count', ()=>{
+        let currentState = {
+            count: 1
+        }
+        const state = recipeReducer(currentState, {type: 'CLEAR_COUNT'});
+        expect(state).toEqual({
+            count: 0
+        })
+    })
+    it('should clear search results', ()=>{
+        let currentState = {
+            recipes: [
+                {
+                    title: 'title',
+                    recipe_url: 'recipeurl',
+                    image_url: 'imageurl'
+                }
+            ],
+            searched: true,
+            count: 2,
+            prevSearchTerm: 'tomato',
+            saved: true
+        }
+        const state = recipeReducer(currentState, {type: 'CLEAR_SEARCH_RESULTS'});
+        expect(state).toEqual({
+            recipes: [],
+            searched: false,
+            count: 0,
+            prevSearchTerm: '',
+            saved: false
+        })
+    })
+    it('should set loading to true and error to false when getting saved recipes', ()=>{
+        const currentState = {
+            loading: false,
+            error: false
+        }
+        const state = recipeReducer(currentState, {type:'GET_SAVED_RECIPES_REQUEST'})
+        expect(state).toEqual({
+            loading: true, 
+            error: false
+        })
+    })
 })
-
-// const initialState = {
-//     recipes: [],
-//     favoriteRecipes: [],
-//     loading: false,
-//     error: false,
-//     searched: false,
-//     count: 0,
-//     prevSearchTerm: '',
-//     saved: false
-// };

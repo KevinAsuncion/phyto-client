@@ -22,7 +22,6 @@ export const getSearchResults = (searchTerm,count) => dispatch => {
         })
         .catch(err=>{
             dispatch(getSearchRequestError())
-            console.error(err)
         })
 } 
 
@@ -63,7 +62,6 @@ export const saveRecipe = savedRecipe => (dispatch, getState) => {
     .then(() => dispatch(saveRecipeSuccess())) 
     .catch(err=> {
         dispatch(saveRecipeError())
-        console.error(err.message);
     })
 }
 
@@ -97,7 +95,6 @@ export const getSavedRecipes = () => (dispatch, getState) => {
     .then(res => dispatch(getSavedRecipesSuccess(res.recipes)))
     .catch(err => {
         dispatch(getSavedRecipesRequestError())
-        console.error(err);
     })
 }
 
