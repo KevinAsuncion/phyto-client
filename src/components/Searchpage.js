@@ -41,7 +41,8 @@ export class Searchpage extends Component {
             error = <div className="searchpage-error"><p>Looks like there was an error. Try your request again.</p></div>
         }      
         if (this.props.recipes.length > 0){
-            showMoreBtn = <button className="show-more-button" onClick={()=>this.handleShowMore(this.props.prevSearchTerm, this.props.count)}> Show More </button> 
+            showMoreBtn = <button className="show-more-button" onClick={()=>this.handleShowMore(this.props.prevSearchTerm, this.props.count)}> 
+            {this.props.loading ? 'Loading...': 'Show More'} </button> 
         }
         if(this.props.saved){
             saveSuccess = <div className="save-success"><p>Recipe Saved.</p></div>
