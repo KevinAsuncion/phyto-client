@@ -84,7 +84,7 @@ export const recipeReducer = (state = initialState, action) => {
         })
     } else if (action.type === SAVE_RECIPE_ERROR) {
         return Object.assign({}, state, {
-            saved: true,
+            saved: false,
             loading: false,
             error: true
         })
