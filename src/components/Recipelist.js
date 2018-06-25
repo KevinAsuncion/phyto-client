@@ -22,7 +22,6 @@ export class Recipelist extends Component {
     }
 
     handleButtons(recipe){
-        let btn
         if (this.props.type === "myrecipes") {
             return (
                 <div className="recipe-card-buttons">
