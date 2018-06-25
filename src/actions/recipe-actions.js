@@ -5,24 +5,24 @@ export const getSearchResults = (searchTerm,count) => dispatch => {
     dispatch(getSearchRequest())
     const searchCount = count === 0 ? 12 : count + 12 
     return fetch(`https://api.edamam.com/search?q=${searchTerm}&app_id=${API_ID}&app_key=${API_KEY}&health=vegan&health=alcohol-free&to=${searchCount}`)
-        .then((res) => res.json())
-        .then(res => res.hits.map(item=>{
-            return {
-                image_url: item.recipe.image,
-                title: item.recipe.label,
-                recipe_url: item.recipe.url
-            } 
-        }))
-        .then(recipes =>{
-            if(recipes.length === 0 ){
-                dispatch(getSearchRequestError())
-            } else {
-                dispatch(getSearchResultsSuccess(recipes, searchTerm))
-            }
-        })
-        .catch(err=>{
+    .then((res) => res.json())
+    .then(res => res.hits.map(item=>{
+        return {
+            image_url: item.recipe.image,
+            title: item.recipe.label,
+            recipe_url: item.recipe.url
+        } 
+    }))
+    .then(recipes =>{
+        if(recipes.length === 0 ){
             dispatch(getSearchRequestError())
-        })
+        } else {
+            dispatch(getSearchResultsSuccess(recipes, searchTerm))
+        }
+    })
+    .catch(err=>{
+        dispatch(getSearchRequestError())
+    })
 } 
 
 export const GET_SEARCH_RESULTS_SUCCESS = 'SEARCH_RESULTS_SUCCESS';
@@ -116,6 +116,7 @@ export const getSavedRecipesRequestError = () => ({
 
 //Delete favorite recipes 
 export const deleteSavedRecipe = (id) => (dispatch, getState) => {
+    dispatch(deleteSavedRecipeRequest())
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/recipes/${id}`, {
         method: 'DELETE',
@@ -124,11 +125,21 @@ export const deleteSavedRecipe = (id) => (dispatch, getState) => {
             "Authorization": `Bearer ${authToken}`
         }
     })
-        .then(res => dispatch(getSavedRecipes()))
-        .catch(err => {
-            console.error(err);
-        })
+    .then(res => dispatch(getSavedRecipes()))
+    .catch(err => {
+        dispatch(deleteSavedRecipeError());
+    })
 }
+
+export const DELETE_SAVED_RECIPE_ERROR = 'DELETE_SAVED_RECIPE_ERROR'
+export const deleteSavedRecipeError = () => ({
+    type: DELETE_SAVED_RECIPE_ERROR
+})
+
+export const DELETE_SAVED_RECIPE_REQUEST = 'DELETE_SAVED_RECIPE_REQUEST'
+export const deleteSavedRecipeRequest = () =>({
+    type: DELETE_SAVED_RECIPE_REQUEST
+})
 
 //Clear Search Results 
 export const CLEAR_SEARCH_RESULTS = 'CLEAR_SEARCH_RESULTS'

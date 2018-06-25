@@ -7,6 +7,8 @@ import {
     GET_SAVED_RECIPES_REQUEST,
     GET_SAVED_RECIPES_REQUEST_ERROR,
     SAVE_RECIPE_SUCCESS,
+    DELETE_SAVED_RECIPE_ERROR,
+    DELETE_SAVED_RECIPE_REQUEST,
     SAVE_RECIPE_ERROR,
     SAVE_RECIPE_REQUEST,
     CLEAR_COUNT
@@ -89,6 +91,16 @@ export const recipeReducer = (state = initialState, action) => {
             error: true
         })
     } else if (action.type === SAVE_RECIPE_REQUEST){
+        return Object.assign({}, state, {
+            loading: true,
+            error: false
+        })
+    } else if (action.type === DELETE_SAVED_RECIPE_ERROR){
+        return Object.assign({},state, {
+            loading: false,
+            error: true
+        })
+    } else if (action.type === DELETE_SAVED_RECIPE_REQUEST){
         return Object.assign({}, state, {
             loading: true,
             error: false
