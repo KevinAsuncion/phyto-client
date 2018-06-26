@@ -25,17 +25,18 @@ export class Loginform extends Component {
                 <form onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
-                    <label htmlFor="username">Username</label>
+                    <label>Username
                         <Field
                             component={Input}
                             id="login-username"
                             type="text"
                             autoComplete="off"
-                            name="username"
                             placeholder="Username"
+                            name="username"
                             validate={[required, nonEmpty]}
                         />
-                    <label htmlFor="password">Password</label>
+                    </label>
+                    <label>Password
                         <Field
                             component={Input}
                             id="login-password"
@@ -44,6 +45,7 @@ export class Loginform extends Component {
                             name="password"
                             validate={[required, nonEmpty]}
                         />
+                    </label>
                     {error}
                     <button disabled={this.props.pristine || this.props.submitting}>
                         {this.props.loading ? "Loading..." : "Log in"}

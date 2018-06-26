@@ -55,8 +55,9 @@ export class Searchpage extends Component {
                             placeholder="Tomato, eggplant, thai, chinese..."
                             ref={input => this.input = input}
                             required="required"
+                            aria-label="searchbox"
                         />
-                        <button type="submit"><i className="fas fa-search"></i></button>
+                        <button type="submit" aria-label="search-button"><i className="fas fa-search"></i></button>
                     </form> 
                 </div> 
                 <div className="results-container">

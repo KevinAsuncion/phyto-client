@@ -20,7 +20,7 @@ export class Signupform extends Component {
         return (
             <div className="signup-form">
                 <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-                    <label htmlFor="fullname">Full Name</label>
+                    <label>Full Name
                             <Field 
                             component={Input}
                             id="signup-fullname"
@@ -29,7 +29,8 @@ export class Signupform extends Component {
                             placeholder="Full Name"
                             name="fullname"
                         />
-                    <label htmlFor="username">Username</label>
+                    </label>
+                    <label>Username
                             <Field
                             component={Input}
                             id="signup-username"
@@ -39,7 +40,8 @@ export class Signupform extends Component {
                             name="username"
                             validate={[required, nonEmpty, isTrimmed]}
                         />
-                    <label htmlFor="password">Password</label>
+                    </label>
+                    <label>Password
                             <Field 
                             component={Input}
                             id="signup-password"
@@ -48,7 +50,8 @@ export class Signupform extends Component {
                             name="password"
                             validate={[required, nonEmpty, matchesPassword, passwordLength]}
                         />
-                    <label htmlFor="confirmPassword">Confirm Password</label>
+                    </label>
+                    <label>Confirm Password
                             <Field
                             component={Input}
                             id="signup-password-confirm"
@@ -57,6 +60,7 @@ export class Signupform extends Component {
                             name="confirmPassword"
                             validate={[required, nonEmpty, matchesPassword, passwordLength]}
                         />
+                    </label>
                     <button
                         type="submit"
                         disabled={this.props.pristine || this.props.submitting}>

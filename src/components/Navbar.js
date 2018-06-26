@@ -21,17 +21,17 @@ export class Navbar extends Component {
         if(!this.props.loggedIn){
             navElements = (
                 <ul>
-                    <Link to="/"><li>Home</li></Link>
-                    <Link to="/login"><li>Login</li></Link>
-                    <Link to="/signup"><li>Signup</li></Link>
+                    <li><Link to="/">Home</Link></li> 
+                    <li><Link to="/login">Login</Link></li>
+                    <li><Link to="/signup">Signup</Link></li>
                 </ul> 
             );
         } else {
             navElements = (
                 <ul>
-                    <Link to="/discover"><li>Discover</li></Link>
-                    <Link to="/myrecipes"><li onClick={()=> this.handleClick()}>My Recipes</li></Link>
-                    <Link to="/"><li onClick={(e)=>this.handleLogout(e)}>Logout</li></Link>
+                    <li><Link to="/discover">Discover</Link></li>
+                    <li onClick={() => this.handleClick()}><Link to="/myrecipes">My Recipes</Link></li>
+                    <li onClick={(e) => this.handleLogout(e)}><Link to="/">Logout</Link></li>
                 </ul>  
             )
         }
