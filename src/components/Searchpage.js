@@ -40,10 +40,10 @@ export class Searchpage extends Component {
         if(this.props.error) {
             error = <div className="searchpage-error"><p>Looks like there was an error. Try your request again.</p></div>
         }      
-        if (this.props.recipes.length > 0){
-            showMoreBtn = <button className="show-more-button" onClick={()=>this.handleShowMore(this.props.prevSearchTerm, this.props.count)}> 
+        if (this.props.recipes.length > 0 ){
+            showMoreBtn = <button className="show-more-button" onClick={() => this.handleShowMore(this.props.prevSearchTerm, this.props.count)}>
             {this.props.loading ? 'Loading...': 'Show More'} </button> 
-        }
+        } 
         if(this.props.saved){
             saveSuccess = <div className="save-success"><p>Recipe Saved.</p></div>
         }
@@ -62,8 +62,8 @@ export class Searchpage extends Component {
                     </form> 
                 </div> 
                 <div className="results-container">
-                    {error}
                     {loader}
+                    {error}
                     {saveSuccess}
                     <Recipelist recipes={this.props.recipes} type="searchrecipes"/>
                     {showMoreBtn}
