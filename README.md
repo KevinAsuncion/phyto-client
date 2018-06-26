@@ -2,7 +2,7 @@
 Phyto is a plant based recipe discovery and bookmarking app.  Phyto is for those who would like to make the transition to eating a more plant based diet.  
 
 ## Demo
-[Live Demo](https://optimistic-swartz-84bc04.netlify.com/)
+[Live Demo](https://phyto.netlify.com/)
 
 For a demo account use the following credentials: 
 Username:  demouser
@@ -24,8 +24,8 @@ My Recipes
 ## Technology 
 
 ### Front-End
-* HTML
-* CSS
+* HTML5
+* CSS3
 * Javscript
 * React
 * Redux
@@ -34,9 +34,11 @@ My Recipes
 View [Server Code](https://github.com/KevinAsuncion/phyto-api)
 * Node
 * Express
-* Mongo
+* MongoDB
 * Mongoose
 * Bcrypt
+* Passport
+
 
 ### Testing
 * Mocha
