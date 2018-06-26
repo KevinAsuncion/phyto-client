@@ -14,11 +14,11 @@ export default class App extends Component {
     return ( 
       <Router>
         <div className="App">
-          <header>
+          <header role="banner">
           <h1 className="App-title"><i className="fas fa-leaf"></i>Phyto</h1>
             <Navbar />
           </header>
-          <main>
+          <main role="main">
             <Switch>
               <Route exact path="/" component={Landingpage} />
               <Route exact path="/login" component={Login} />

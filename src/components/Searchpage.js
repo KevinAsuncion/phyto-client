@@ -21,11 +21,10 @@ export class Searchpage extends Component {
        if(this.input.value !== this.props.prevSearchTerm){
            this.props.dispatch(clearCount())
            this.props.dispatch(getSearchResults(this.input.value, 0));
-           this.input.value = ''
        } else {
            this.props.dispatch(getSearchResults(this.input.value, 0));
-           this.input.value = ''
        }
+       this.input.value = ''
     }
 
     handleShowMore(prevSearchTerm,count){
