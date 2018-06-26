@@ -7,5 +7,11 @@
 }
 
 .myrecipes-error {
-    color:red;
+    color:white;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    background-color: red;
+    padding: 5px;
+    bottom: 0;
 }
