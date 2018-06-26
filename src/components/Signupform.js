@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Field, reduxForm, focus} from 'redux-form';
+import { Field, reduxForm, focus } from 'redux-form';
 import { signupUser } from '../actions/signup-actions';
 import { login } from '../actions/auth';
 import { Link } from 'react-router-dom';
@@ -16,11 +16,8 @@ export class Signupform extends Component {
             .dispatch(signupUser(user))
             .then(() => this.props.dispatch(login(username, password)));
     }
-
     render() {
-      
         return (
-
             <div className="signup-form">
                 <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
                     <label htmlFor="fullname">Full Name</label>

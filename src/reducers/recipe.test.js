@@ -37,14 +37,14 @@ describe('recipeReducer', () => {
             error: false,
             searched: false,
             saved: false
-        }
+        };
         const savedRecipes = [
             {
                 title: 'title',
                 recipe_url: 'recipeurl',
                 image_url: 'imageurl'
             }
-        ]
+        ];
         const state = recipeReducer(currentState, { type: 'GET_SAVED_RECIPES_SUCCESS', savedRecipes: savedRecipes });
         expect(state).toEqual({
             favoriteRecipes: savedRecipes,
@@ -63,12 +63,12 @@ describe('recipeReducer', () => {
         let currentState = {
             count: 1
         }
-        const state = recipeReducer(currentState, {type: 'CLEAR_COUNT'});
+        const state = recipeReducer(currentState, { type: 'CLEAR_COUNT' });
         expect(state).toEqual({
             count: 0
         })
     })
-    it('should clear search results', ()=>{
+    it('should clear search results', () => {
         let currentState = {
             recipes: [
                 {
@@ -81,8 +81,8 @@ describe('recipeReducer', () => {
             count: 2,
             prevSearchTerm: 'tomato',
             saved: true
-        }
-        const state = recipeReducer(currentState, {type: 'CLEAR_SEARCH_RESULTS'});
+        };
+        const state = recipeReducer(currentState, { type: 'CLEAR_SEARCH_RESULTS' });
         expect(state).toEqual({
             recipes: [],
             searched: false,
@@ -91,12 +91,12 @@ describe('recipeReducer', () => {
             saved: false
         })
     })
-    it('should set loading to true and error to false when getting saved recipes', ()=>{
+    it('should set loading to true and error to false when getting saved recipes', () => {
         const currentState = {
             loading: false,
             error: false
-        }
-        const state = recipeReducer(currentState, {type:'GET_SAVED_RECIPES_REQUEST'})
+        };
+        const state = recipeReducer(currentState, {type:'GET_SAVED_RECIPES_REQUEST'});
         expect(state).toEqual({
             loading: true, 
             error: false
@@ -107,8 +107,8 @@ describe('recipeReducer', () => {
         const currentState = {
             loading: true,
             error: false
-        }
-        const state = recipeReducer(currentState, { type: 'GET_SAVED_RECIPES_REQUEST_ERROR' })
+        };
+        const state = recipeReducer(currentState, { type: 'GET_SAVED_RECIPES_REQUEST_ERROR' });
         expect(state).toEqual({
             loading: false,
             error: true

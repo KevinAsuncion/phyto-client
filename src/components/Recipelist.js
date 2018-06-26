@@ -5,7 +5,6 @@ import { saveRecipe, deleteSavedRecipe } from '../actions/recipe-actions';
 import './Recipelist.css';
 
 export class Recipelist extends Component {
-   
     handleSave(e){
         const card = e.target
         const savedRecipe = {
@@ -31,7 +30,8 @@ export class Recipelist extends Component {
                         onClick={(e) => this.handleDelete(e)}>
                         Delete</button>
                     <a href={recipe.recipe_url} target="_blank" rel="noopener noreferrer"><button className="view-button">View</button></a>
-                </div>)
+                </div>
+            )
         } else if (this.props.type === "searchrecipes") {
            return (
                <div className="recipe-card-buttons" >
@@ -43,7 +43,8 @@ export class Recipelist extends Component {
                         onClick={(e) => this.handleSave(e)}>
                         Save</button>
                     <a href={recipe.recipe_url} target="_blank" rel="noopener noreferrer"><button className="view-button">View</button></a>
-                </div>)
+                </div>
+            )
         }
     }
    

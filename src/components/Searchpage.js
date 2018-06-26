@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './Requireslogin'
 import Recipelist from './Recipelist'
-import { getSearchResults, clearCount, getSearchRequestError} from '../actions/recipe-actions'
+import { getSearchResults, clearCount, getSearchRequestError } from '../actions/recipe-actions'
 import './Searchpage.css'
 
 export class Searchpage extends Component {
-   
    handleSubmit(e){
        e.preventDefault();
        const str = this.input.value.trim().toLowerCase();
@@ -53,7 +52,7 @@ export class Searchpage extends Component {
                         <input 
                             type="text" 
                             autoComplete="off" 
-                            placeholder="Search for recipes"
+                            placeholder="Tomato, eggplant, thai, chinese..."
                             ref={input => this.input = input}
                             required="required"
                         />

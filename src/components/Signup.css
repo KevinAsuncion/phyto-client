@@ -61,7 +61,7 @@
     background-color: rgb(27, 177, 27);
 }
 
-@media only screen and (min-width:300px) and (max-width:450px){
+@media only screen and (min-width:300px) and (max-width:450px) {
     .signup-container {
        padding: 10px;
     }

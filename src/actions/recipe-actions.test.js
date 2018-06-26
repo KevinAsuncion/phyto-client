@@ -39,8 +39,8 @@ describe('getSearchResultSuccess', () => {
         const searchTerm = 'tomato'
         const action = getSearchResultsSuccess(recipes,searchTerm);
         expect(action.type).toEqual(GET_SEARCH_RESULTS_SUCCESS);
-        expect(action.recipes).toEqual(recipes)
-        expect(action.searchTerm).toEqual(searchTerm)
+        expect(action.recipes).toEqual(recipes);
+        expect(action.searchTerm).toEqual(searchTerm);
     })
 })
 
@@ -55,7 +55,7 @@ describe('getSavedRecipesSuccess', () => {
         ]
         const action = getSavedRecipesSuccess(savedRecipes);
         expect(action.type).toEqual(GET_SAVED_RECIPES_SUCCESS);
-        expect(action.savedRecipes).toEqual(savedRecipes)
+        expect(action.savedRecipes).toEqual(savedRecipes);
     })
 })
 

@@ -6,6 +6,7 @@ const localStorageMock = {
     setItem: jest.fn(),
     clear: jest.fn()
 };
+
 global.localStorage = localStorageMock
 
 Enzyme.configure({ adapter: new Adapter() });
